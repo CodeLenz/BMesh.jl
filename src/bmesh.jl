@@ -41,12 +41,12 @@ struct Bmesh
         @assert size(coord,1)==nn "Bmesh:: number of rows in coord must be equal to the number of nodes"
         @assert size(coord,2)==dimension "Bmesh:: number of columns in coord must be equal to dimension"
         @assert size(connect,1)==ne "Bmesh:: number of rows in connect must be equal to the number of elements"
-        @assert ((etype==:truss2D || etype==:truss3D) && size(connect,2)==2  ) "Bmesh:: number of columns in connect must be equal to 2 for truss elements"
-        @assert ((etype==:solid2D) && size(connect,2)==4) "Bmesh:: number of columns in connect must be equal to 4 for solid2D elements"
+        @assert (etype==:truss2D || etype==:truss3D) && size(connect,2)==2  "Bmesh:: number of columns in connect must be equal to 2 for truss elements"
+        @assert (etype==:solid2D) && size(connect,2)==4 "Bmesh:: number of columns in connect must be equal to 4 for solid2D elements"
               
   
         # This should be relaxed for different elements
-        @assert (etype==:truss2D || etype==:truss3D || etype==:solid2D ) "Bmesh:: just truss (2D and 3D) and solid 2D by now"
+        @assert etype==:truss2D || etype==:truss3D || etype==:solid2D  "Bmesh:: just truss (2D and 3D) and solid 2D by now"
         
         # Creates the data type
         new(dimension,etype,nn,ne,coord,connect, Lx, Ly, Lz, nx, ny, nz)
