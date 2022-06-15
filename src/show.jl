@@ -6,7 +6,8 @@ function Plot_structure(bmesh::Bmesh;
                         cutout = 1E-3,
                         name=""
                         )
-
+   
+  
     # Local aliases
     ne = bmesh.ne
     nn = bmesh.nn
@@ -18,7 +19,7 @@ function Plot_structure(bmesh::Bmesh;
 
     # Ainda só para 2D (generalizar depois)
     #@assert bmesh.dimension==2 
-    @assert bmesh.etype==:truss2D || bmesh.etype==:truss3D
+    @assert bmesh.etype==:truss2D || bmesh.etype==:truss3D "Ainda só para treliça 2D e 3D"
 
     # Starts the plot
     if dimen==2
