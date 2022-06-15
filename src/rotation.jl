@@ -150,7 +150,7 @@ struct Rotation
   #
   # Monta a matriz de rotação para um elemento 
   #
-  function Monta_T(r::Rotation, bmesh::Bmesh)
+  function T_matrix(r::Rotation, bmesh::Bmesh)
 
         if bmesh.dimension==2
             return  T2(r)
