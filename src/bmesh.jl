@@ -41,8 +41,8 @@ struct Bmesh
         @assert size(coord,1)==nn "Bmesh:: number of rows in coord must be equal to the number of nodes"
         @assert size(coord,2)==dimension "Bmesh:: number of columns in coord must be equal to dimension"
         @assert size(connect,1)==ne "Bmesh:: number of rows in connect must be equal to the number of elements"
-        @assert (size(connect,2)==2 && (etype==:truss2D || etype==:truss3D)) "Bmesh:: number of columns in connect must be equal to 2 for truss elements"
-        @assert (size(connect,2)==4 && (etype==:solid2D)) "Bmesh:: number of columns in connect must be equal to 4 for solid2D elements"
+        @assert ((etype==:truss2D || etype==:truss3D) && size(connect,2)==2  ) "Bmesh:: number of columns in connect must be equal to 2 for truss elements"
+        @assert ((etype==:solid2D) && size(connect,2)==4) "Bmesh:: number of columns in connect must be equal to 4 for solid2D elements"
               
   
         # This should be relaxed for different elements
