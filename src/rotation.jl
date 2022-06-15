@@ -152,7 +152,7 @@ struct Rotation
   #
   function Monta_T(r::Rotation, bmesh::Bmesh)
 
-        if bmesh.dimen==2
+        if bmesh.dimension==2
             return  T2(r)
         else
             return  T3(r)
