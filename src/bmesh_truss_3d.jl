@@ -390,8 +390,6 @@ function Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
                 #
                 no1 = j + (nx+1)*(i-1) + (k-1)*nn_plane
                 no2 = k*nn_plane + j + (nx+1)*i + 1
-                
-                @show cont+1, no1, no2
 
                 # Increment counter
                 cont += 1
@@ -405,9 +403,6 @@ function Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
                 #
                 no1 = no1 + 1
                 no2 = no2 - 1
-              
-
-                @show cont+1, no1, no2
 
                 # Increment counter
                 cont += 1
@@ -422,9 +417,6 @@ function Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
                 no1 = no1 + nn_plane
                 no2 = no2 - nn_plane
               
-
-                @show cont+1, no1, no2
-
 
                 # Increment counter
                 cont += 1
