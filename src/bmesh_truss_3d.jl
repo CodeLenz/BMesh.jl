@@ -456,7 +456,7 @@ function Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
 
 
     # Creates the datatype
-    bmesh = Bmesh(3,:truss3D,nn,ne,coord,connect)
+    bmesh = Bmesh(3,:truss3D,nn,ne,coord,connect, Lx, Ly, Lz, nx, ny, nz)
 
     # Show the conectivities
     if showtruss
