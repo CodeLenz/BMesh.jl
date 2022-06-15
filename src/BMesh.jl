@@ -12,7 +12,9 @@ module BMesh
    include("show.jl")
    
 
-   export Bmesh, Bmesh_truss_2D, Bmesh_truss_3D
+   export Bmesh
+   export Bmesh_truss_2D, Bmesh_truss_3D
+   export Bmesh_solid_2D
    export Rotation, T_matrix
    export Coord, Conect
    export Plot_structure
