@@ -7,6 +7,7 @@ module BMesh
    include("bmesh.jl")
    include("bmesh_truss_2d.jl")
    include("bmesh_truss_3d.jl")
+   include("bmesh_solid_2d.jl")
    include("base.jl")
    include("rotation.jl")
    include("show.jl")
