@@ -13,6 +13,8 @@ module BMesh
    
 
    export Bmesh, Bmesh_truss_2D, Bmesh_truss_3D
+   export Rotation, Monta_T
+   export Coord, Conect
    export Plot_structure
 
 end #module
