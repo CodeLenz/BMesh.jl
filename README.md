@@ -39,7 +39,7 @@ There are some tools to use with Bmesh
    r = Rotations(b3,6)
    
    # Evaluate the rotation matrix for this element
-   T = Monta_T(r,b3)
+   T = T_matrix(r,b3)
    
    
 ```
