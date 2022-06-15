@@ -61,9 +61,12 @@ function Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
     # Number of "diagonal" \ XZ elements (planes em Y)
     # the number of / elements is the same in this plane
     ne_d_xz = 2*nz*(nx)*(ny+1)
+  
+    # Number of inner elements (in each "cube)
+    ne_int = 4*(nx*ny*nz)
 
     # Total number of elements
-    ne = (nz+1)*ne_plane + ne_vz + ne_d_yz + ne_d_xz
+    ne = (nz+1)*ne_plane + ne_vz + ne_d_yz + ne_d_xz + ne_int
 
     # Now lets define two arrays. The first one contains the node
     # coordinates and the second one the connectivities
@@ -370,7 +373,86 @@ function Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
 
     end
 
+    
+    ################################# INTERNALS ####################################
+    #
+    # Each "cube" has 4 internal elements linking the four corner nodes
+    #
+    # Loop
+    for k=1:nz
+            
+        for i=1:ny
 
+            for j=1:nx
+
+                #
+                # First element - Forward (X) diagonal
+                #
+                no1 = j + (nx+1)*(i-1) + (k-1)*nn_plane
+                no2 = k*nn_plane + j + (nx+1)*i + 1
+                
+                @show cont+1, no1, no2
+
+                # Increment counter
+                cont += 1
+
+                # Store the connectivity
+                connect[cont,1] = no1
+                connect[cont,2] = no2
+
+                #
+                # Second element - Backward (X) diagonal
+                #
+                no1 = no1 + 1
+                no2 = no2 - 1
+              
+
+                @show cont+1, no1, no2
+
+                # Increment counter
+                cont += 1
+
+                # Store the connectivity
+                connect[cont,1] = no1
+                connect[cont,2] = no2
+
+                #
+                # Third element - Forward (Y) diagonal
+                #
+                no1 = no1 + nn_plane
+                no2 = no2 - nn_plane
+              
+
+                @show cont+1, no1, no2
+
+
+                # Increment counter
+                cont += 1
+
+                # Store the connectivity
+                connect[cont,1] = no1
+                connect[cont,2] = no2
+
+                #
+                # Fourth element - Backward (Y) diagonal
+                #
+                no1 = no1 - 1
+                no2 = no2 + 1
+              
+
+                @show cont+1, no1, no2
+                # Increment counter
+                cont += 1
+
+                # Store the connectivity
+                connect[cont,1] = no1 
+                connect[cont,2] = no2 
+
+            end #j
+            
+        end #i
+
+    end
 
 
     # Creates the datatype
