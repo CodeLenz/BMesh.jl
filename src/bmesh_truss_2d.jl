@@ -150,7 +150,7 @@ function Bmesh_truss_2D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,
     end #i
 
     # Creates the datatype
-    bmesh = Bmesh(2,:truss2D,nn,ne,coord,connect)
+    bmesh = Bmesh(2,:truss2D,nn,ne,coord,connect,Lx, Ly, 0.0, nx, ny, 0)
 
     # Show the conectivities
     if showtruss
