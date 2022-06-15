@@ -24,24 +24,22 @@ julia> Plot_structure(b3)
 julia> typeof(b2)
 Bmesh
 ```
-where Bmesh is a struct containing 
+There are some tools to use with Bmesh
+
+
 ```julia 
-   # Dimension (2/3)
-    dimension::Int64
-
-    # Element type
-    # :truss2D, :truss3D,...
-    etype::Symbol
-
-    # Number of nodes
-    nn::Int64
- 
-    # Number of elements
-    ne::Int64
-
-    # Nodal coordinates
-    coord::Matrix{Float64}
-
-    # Element connectivities
-    connect::Matrix{Int64}
+   
+   # Nodes of element 2
+   Conect(b2,2)
+   
+   # Coordinates of node 6
+   Coord(b3,6)
+   
+   # Evaluate the director cossine and Length of element 6
+   r = Rotations(b3,6)
+   
+   # Evaluate the rotation matrix for this element
+   T = Monta_T(r,b3)
+   
+   
 ```
