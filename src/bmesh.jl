@@ -25,7 +25,7 @@ struct Bmesh
     # Dimensions
     Lx::Float64
     Ly::Float64
-    Lz::FLoat64
+    Lz::Float64
     nx::Int64
     ny::Int64
     nz::Int64
