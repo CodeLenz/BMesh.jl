@@ -22,9 +22,18 @@ struct Bmesh
     # Element connectivities
     connect::Matrix{Int64}
 
+    # Dimensions
+    Lx::Float64
+    Ly::Float64
+    Lz::FLoat64
+    nx::Int64
+    ny::Int64
+    nz::Int64
+ 
     # Default constructor
     function Bmesh(dimension::Int64,etype::Symbol,nn::Int64,ne::Int64,
-                   coord::Matrix{Float64},connect::Matrix{Int64})
+                   coord::Matrix{Float64},connect::Matrix{Int64},
+                   Lx::Float64, Ly::Float64, Lz::Float64,nx::Int64, ny::Int64, nz::Int64)
 
         # Basic assertions
         @assert (dimension==2 || dimension==3) "Bmesh::dimension must be 2 or 3"
@@ -38,7 +47,7 @@ struct Bmesh
         @assert (etype==:truss2D || etype==:truss3D) "Bmesh:: just truss (2D and 3D) by now"
         
         # Creates the data type
-        new(dimension,etype,nn,ne,coord,connect)
+        new(dimension,etype,nn,ne,coord,connect, Lx, Ly, Lz, nx, ny, nz)
     end
 
 end
