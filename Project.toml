@@ -1,7 +1,7 @@
 name = "BMesh"
 uuid = "91fb467a-ecbd-11ec-0e64-1b9c3501232a"
 authors = ["Eduardo Lenz <eduardobarplenz@gmail.com>"]
-version = "0.1.0"
+version = "0.2.0"
 
 
 [deps]
