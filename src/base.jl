@@ -42,3 +42,53 @@ function Coord(bmesh::Bmesh3D,node::Int64)
   return x,y,z
 
 end
+
+
+#
+# Monta o vetor de graus de liberdade do elemento
+#
+function DOFs(bmesh::Bmesh2D,ele::Int64)
+
+  # Determina quais são os gls GLOBAIS que são "acessados"
+  # por esse elemento
+  nodes = Conect(bmesh,ele)
+
+
+  # Loop para gerar a saída
+  dofs = Vector{Int64}(undef,2*length(nodes))
+
+  cont = 1
+  for i in nodes
+    for j=1:dim
+        dofs[cont] = 2*(i-1)+j
+        cont += 1
+    end
+  end
+ 
+  return dofs
+
+end
+
+#
+# Monta o vetor de graus de liberdade do elemento
+#
+function DOFs(bmesh::Bmesh3D,ele::Int64)
+
+  # Determina quais são os gls GLOBAIS que são "acessados"
+  # por esse elemento
+  nodes = Conect(bmesh,ele)
+
+  # Loop para gerar a saída
+  dofs = Vector{Int64}(undef,3*length(nodes))
+
+  cont = 1
+  for i in nodes
+    for j=1:dim
+        dofs[cont] = 3*(i-1)+j
+        cont += 1
+    end
+  end
+ 
+  return dofs
+  
+end
