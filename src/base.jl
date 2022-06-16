@@ -59,7 +59,7 @@ function DOFs(bmesh::Bmesh2D,ele::Int64)
 
   cont = 1
   for i in nodes
-    for j=1:dim
+    for j=1:2
         dofs[cont] = 2*(i-1)+j
         cont += 1
     end
@@ -83,7 +83,7 @@ function DOFs(bmesh::Bmesh3D,ele::Int64)
 
   cont = 1
   for i in nodes
-    for j=1:dim
+    for j=1:d3
         dofs[cont] = 3*(i-1)+j
         cont += 1
     end
