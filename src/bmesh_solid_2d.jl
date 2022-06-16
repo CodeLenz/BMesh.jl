@@ -40,7 +40,7 @@ function Bmesh_solid_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64, thicknes
      end #j
      
       # Creates the datatype
-    bmesh = Bmesh(2,:solid2D,nn,ne,coord,connect,Lx,Ly,thickness,nx,ny,0)
+    bmesh = Bmesh2D(:solid2D,nn,ne,coord,connect,Lx,Ly,thickness,nx,ny,0)
 
     # Return bmesh
     return bmesh
