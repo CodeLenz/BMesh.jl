@@ -70,7 +70,14 @@ There are some tools to use with Bmesh
    Rotation3D(1.0, 0.0, 0.0, -0.0, 1.0, -0.0, -0.0, 0.0, 1.0, 0.33333333333333337, 1.0, 0.0)
 
    # Global degrees of freedom for a given element
-   julia> DOFs(b3,4)
+   julia> DOFs(b3,20)
+   6-element Vector{Int64}:
+   7
+   8
+   9
+   22
+   23
+   24
 
 
 ```
