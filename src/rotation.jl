@@ -1,8 +1,10 @@
+abstract type Rotation end
+
 
 #
 # Structure containing the director cossines and length for each element
 #
-struct Rotation
+struct Rotation3D <: Rotation
 
     # Cossenos diretores x'
     cos_xx::Float64
@@ -29,13 +31,13 @@ struct Rotation
     α::Float64
   
     # Default constructor
-    function Rotation(bmesh::Bmesh, ele::Int64, α=0.0)
+    function Rotation3D(bmesh::Bmesh3D, ele::Int64, α=0.0)
 
         # Descobre os nós do elemento
         nos = Conect(bmesh,ele)
 
         # Descobre as coordenadas de cada um dos nós
-        Xi = Coord(bmesh,nos[1])
+        Xi = Coord(bmesh,nos[1] )
         Xj = Coord(bmesh,nos[2])
         
         # Calcula os Δs
@@ -86,11 +88,82 @@ struct Rotation
     end
 
   end
+
+
+
+
+#
+# Structure containing the director cossines and length for each element
+#
+struct Rotation2D <: Rotation
+
+    # Cossenos diretores x'
+    cos_xx::Float64
+    cos_yx::Float64
+  
+    # Cossenos diretores y'
+    cos_xy::Float64
+    cos_yy::Float64
+   
+  
+    # Comprimento
+    L::Float64 
+
+    # fe
+    fe::Float64
+  
+  
+    # Default constructor
+    function Rotation2D(bmesh::Bmesh2D, ele::Int64)
+
+        # Descobre os nós do elemento
+        nos = Conect(bmesh,ele)
+
+        # Descobre as coordenadas de cada um dos nós
+        Xi = Coord(bmesh,nos[1])
+        Xj = Coord(bmesh,nos[2])
+        
+        # Calcula os Δs
+        ΔX = Xj .- Xi
+        
+        # Comprimento do elemento
+        L = norm(ΔX)
+
+        # Cossenos diretores (X)
+        cos_xx = ΔX[1] / L
+        cos_yx = ΔX[2] / L
+ 
+        # Calcula "d"
+        fe = abs(cos_xx)
+ 
+        # Duas situações
+        if fe!=0.0
+
+            # Eixo Y'
+            cos_xy = -(cos_xx*cos_yx)/fe
+            cos_yy =  (cos_xx^2)/fe
+            
+            
+        else
+
+            # Eixo Y'
+            cos_xy =  -cos_yx
+            cos_yy =  0.0
+            
+            
+        end
+
+        # Cria o dado
+        new(cos_xx, cos_yx, cos_xy, cos_yy, L, fe)
+
+    end
+
+  end
   
   #
   # Rotação 2D
   # 
-  function T2(r::Rotation)
+  function T_matrix(r::Rotation2D)
 
       T = [r.cos_xx   r.cos_xy   0.0       0.0     ;
            r.cos_yx   r.cos_yy   0.0       0.0     ;  
@@ -102,7 +175,7 @@ struct Rotation
   #
   # Rotação 3D
   #
-  function T3(r::Rotation)
+  function T_matrix(r::Rotation3D)
 
        # Rotação em cada nó
        R = zeros(3,3)
@@ -145,18 +218,4 @@ struct Rotation
 
   end
 
-
-
-  #
-  # Monta a matriz de rotação para um elemento 
-  #
-  function T_matrix(r::Rotation, bmesh::Bmesh)
-
-        if bmesh.dimension==2
-            return  T2(r)
-        else
-            return  T3(r)
-        end
-
-   end    
 
