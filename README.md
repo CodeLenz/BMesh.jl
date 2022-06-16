@@ -22,7 +22,12 @@ julia> Plot_structure(b3)
 
 # Data type
 julia> typeof(b2)
-Bmesh
+Bmesh2D
+
+# Data type
+julia> typeof(b3)
+Bmesh3D
+
 ```
 There are some tools to use with Bmesh
 
@@ -40,8 +45,8 @@ There are some tools to use with Bmesh
    (0.3333333333333333, 0.5, 0.0)
 
    # Evaluate the director cossine and Length of element 6
-   julia> r = Rotation(b3,6)
-   Rotation(1.0, 0.0, 0.0, -0.0, 1.0, -0.0, -0.0, 0.0, 1.0, 0.33333333333333337, 1.0, 0.0)
+   julia> r = Rotation3D(b3,6)
+   Rotation3D(1.0, 0.0, 0.0, -0.0, 1.0, -0.0, -0.0, 0.0, 1.0, 0.33333333333333337, 1.0, 0.0)
 
    
    # Evaluate the rotation matrix for this element
@@ -55,14 +60,14 @@ There are some tools to use with Bmesh
    0.0  0.0  0.0  0.0  0.0  1.0
 
    # Vector with director cossines and lengths for all elements
-   julia> vr = Vector{Rotation}(undef,b3.ne);
+   julia> vr = Vector{Rotation3D}(undef,b3.ne);
 
    julia> for e=1:b3.ne
-              vr[e] = Rotation(b3,e)
+              vr[e] = Rotation3D(b3,e)
           end 
           
    julia> vr[6]
-   Rotation(1.0, 0.0, 0.0, -0.0, 1.0, -0.0, -0.0, 0.0, 1.0, 0.33333333333333337, 1.0, 0.0)
+   Rotation3D(1.0, 0.0, 0.0, -0.0, 1.0, -0.0, -0.0, 0.0, 1.0, 0.33333333333333337, 1.0, 0.0)
 
 
 ```
