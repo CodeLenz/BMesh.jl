@@ -1,3 +1,4 @@
+
 module BMesh
 
    # Dependencies
@@ -13,10 +14,10 @@ module BMesh
    include("show.jl")
    
 
-   export Bmesh
+   export Bmesh, Bmesh2D, Bmesh3D
    export Bmesh_truss_2D, Bmesh_truss_3D
    export Bmesh_solid_2D
-   export Rotation, T_matrix
+   export Rotation, Rotation2D, Rotation3D, T_matrix
    export Coord, Conect
    export Plot_structure
 
