@@ -157,7 +157,7 @@ struct Rotation2D <: Rotation
         #    cos_yy =  0.0
             
             
-        end
+        # end
 
         # Cria o dado
         new(cos_xx, cos_yx, cos_xy, cos_yy, L, fe)
