@@ -30,7 +30,7 @@ There are some tools to use with Bmesh
    Coord(b3,6)
    
    # Evaluate the director cossine and Length of element 6
-   r = Rotation3D(b3,6)
+   r = Rotations(b3,6)
    
    # Evaluate the rotation matrix for this element
    T = T_matrix(r,b3)
