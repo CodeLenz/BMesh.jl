@@ -43,6 +43,27 @@ function Coord(bmesh::Bmesh3D,node::Int64)
 
 end
 
+#
+# Calcula o comprimento entre os nós nodes[1] e nodes[2]
+# de um elemento
+#
+function Length(bmesh::Bmesh,ele::Int64;nodes=(1,2))
+    
+    # Nodes
+    n = Conect(bmesh,ele)
+    
+    # Basic assertions
+    nodes[1] <= maximum(n) || throw("Length::nodes[1] is larger than the maximum number of nodes for this element")
+    nodes[2] <= maximum(n) || throw("Length::nodes[2] is larger than the maximum number of nodes for this element")
+    
+    # Coordinates
+    c1 = Coord(bmesh,n[nodes[1]])
+    c2 = Coord(bmesh,n[nodes[2]])
+    
+    # Length
+    return norm(c1.-c2)
+    
+end
 
 #
 # Monta o vetor de graus de liberdade do elemento
