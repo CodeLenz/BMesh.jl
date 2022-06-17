@@ -130,25 +130,31 @@ struct Rotation2D <: Rotation
         L = norm(ΔX)
 
         # Cossenos diretores (X)
+        # cos
         cos_xx = ΔX[1] / L
+        # -sin
         cos_yx = ΔX[2] / L
- 
+        # cos
+        cos_yy = cos_xx
+        # sin
+        cos_xy = -cos_yx
+        
         # Calcula "d"
-        fe = abs(cos_xx)
+        #fe = abs(cos_xx)
  
         # Duas situações
-        if fe!=0.0
+        #if fe!=0.0
 
             # Eixo Y'
-            cos_xy = -(cos_xx*cos_yx)/fe
-            cos_yy =  (cos_xx^2)/fe
+        #    cos_xy = -(cos_xx*cos_yx)/fe
+        #    cos_yy =  (cos_xx^2)/fe
             
             
-        else
+        #else
 
             # Eixo Y'
-            cos_xy =  -cos_yx
-            cos_yy =  0.0
+        #    cos_xy =  -cos_yx
+        #    cos_yy =  0.0
             
             
         end
