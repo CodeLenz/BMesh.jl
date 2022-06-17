@@ -14,9 +14,6 @@ b3 = Bmesh_truss_3D(1.0,3,1.0,2,1.0,4)
 # 2D background mesh in a 1 x 1 x 0.1 solid domain with 10 divisions in X and 10 in Y
 bs2 = Bmesh_solid_2D(1.0,10,1.0,10,0.1)
 
-# 3D background mesh in a 1 x 1 x 1.0 solid domain with 10 divisions in X, 10 in Y and 10 in Z
-bs3 = Bmesh_solid_3D(1.0,10,1.0,10,1.0,10)
-
 # Visualize 
 Plot_structure(b3)
 
