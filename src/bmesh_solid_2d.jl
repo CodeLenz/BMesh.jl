@@ -1,4 +1,4 @@
-function Bmesh_solid_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64, thickness::Float64)
+function Bmesh_solid_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64)
 
      # Primeiro geramos os nós de baixo para cima, esquerda para a direita
      nn = (nx+1)*(ny+1)
@@ -40,7 +40,7 @@ function Bmesh_solid_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64, thicknes
      end #j
      
       # Creates the datatype
-    bmesh = Bmesh2D(:solid2D,nn,ne,coord,connect,Lx,Ly,thickness,nx,ny,0)
+    bmesh = Bmesh2D(:solid2D,nn,ne,coord,connect,Lx,Ly, nx,ny)
 
     # Return bmesh
     return bmesh
