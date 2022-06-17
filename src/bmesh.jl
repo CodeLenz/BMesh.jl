@@ -25,15 +25,13 @@ struct Bmesh2D <: Bmesh
     # Dimensions
     Lx::Float64
     Ly::Float64
-    Lz::Float64
     nx::Int64
     ny::Int64
-    nz::Int64
  
     # Default constructor
     function Bmesh2D(etype::Symbol,nn::Int64,ne::Int64,
                    coord::Matrix{Float64},connect::Matrix{Int64},
-                   Lx::Float64, Ly::Float64, Lz::Float64,nx::Int64, ny::Int64, nz::Int64)
+                   Lx::Float64, Ly::Float64, nx::Int64, ny::Int64)
 
         @assert size(coord,1)==nn "Bmesh2D:: number of rows in coord must be equal to the number of nodes"
         @assert size(coord,2)==2 "Bmesh2D:: number of columns in coord must be equal to 2"
@@ -44,7 +42,7 @@ struct Bmesh2D <: Bmesh
         @assert etype==:truss2D || etype==:solid2D  "Bmesh2D:: just :truss2D and :solid2D by now"
         
         # Creates the data type
-        new(etype,nn,ne,coord,connect, Lx, Ly, Lz, nx, ny, nz)
+        new(etype,nn,ne,coord,connect, Lx, Ly, nx, ny)
     end
 
 end
