@@ -17,7 +17,7 @@ module BMesh
    export Bmesh, Bmesh2D, Bmesh3D
    export Bmesh_truss_2D, Bmesh_truss_3D
    export Bmesh_solid_2D
-   export Rotation, Rotation2D, Rotation3D, T_matrix
+   export Rotation, Rotation2D, Rotation3D, Rotations, T_matrix
    export Coord, Conect, DOFs
    export Plot_structure
 
