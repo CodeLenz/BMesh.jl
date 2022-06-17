@@ -29,6 +29,9 @@ There are some tools to use with Bmesh
    # Coordinates of node 6
    Coord(b3,6)
    
+   # Length of element 2
+   Lenght(b3,2)
+   
    # Evaluate the director cossine and Length of element 6
    r = Rotations(b3,6)
    
