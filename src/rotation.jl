@@ -234,9 +234,9 @@ struct Rotation2D <: Rotation
   #
   # General call to T_matrix
   #
-  function T_matrix(bmesh::Bmesh, ele::Int64)
+  function T_matrix(bmesh::Bmesh, ele::Int64, α=0.0)
     
-       r = Rotations(bmesh,ele)
+       r = Rotations(bmesh,ele,α)
        T_matrix(r)
     
   end
