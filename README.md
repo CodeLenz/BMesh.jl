@@ -36,7 +36,10 @@ There are some tools to use with Bmesh
    r = Rotations(b3,6)
    
    # Evaluate the rotation matrix for this element
-   T = T_matrix(r,b3)
+   T = T_matrix(r)
+   
+   # T can also be used directly (without calling Rotations)
+   T = T_matrix(b3,6)
    
    # Global degrees of freedom for a given element
    DOFs(b3,20)
