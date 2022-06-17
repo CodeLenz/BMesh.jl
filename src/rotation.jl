@@ -161,6 +161,19 @@ struct Rotation2D <: Rotation
   end
   
   #
+  # General driver for rotation
+  #
+  function Rotations(bmesh::Bmesh,ele::Int64,α=0.0)
+    
+    if isa(bmesh,Bmesh2D)
+       return Rotation2D(bmesh,ele)
+    else
+       return Rotation3D(bmesh,ele,α)
+    end
+    
+ end
+
+  #
   # Rotação 2D
   # 
   function T_matrix(r::Rotation2D)
