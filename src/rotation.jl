@@ -104,7 +104,6 @@ struct Rotation2D <: Rotation
     # Cossenos diretores y'
     cos_xy::Float64
     cos_yy::Float64
-   
   
     # Comprimento
     L::Float64 
@@ -126,21 +125,23 @@ struct Rotation2D <: Rotation
         # Calcula os Δs
         ΔX = Xj .- Xi
         
+        Θ = atan(ΔX[2], ΔX[1])  
+        
         # Comprimento do elemento
         L = norm(ΔX)
 
         # Cossenos diretores (X)
         # cos
-        cos_xx = ΔX[1] / L
+        cos_xx = cos(Θ) #ΔX[1] / L
         # -sin
-        cos_yx = ΔX[2] / L
+        cos_yx = -sin(Θ) #ΔX[2] / L
         # cos
         cos_yy = cos_xx
         # sin
         cos_xy = -cos_yx
         
         # Calcula "d"
-        #fe = abs(cos_xx)
+        fe = abs(cos_xx)
  
         # Duas situações
         #if fe!=0.0
