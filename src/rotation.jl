@@ -111,7 +111,6 @@ struct Rotation2D <: Rotation
     # fe
     fe::Float64
   
-  
     # Default constructor
     function Rotation2D(bmesh::Bmesh2D, ele::Int64)
 
