@@ -24,7 +24,7 @@ function Coord(bmesh::Bmesh2D,node::Int64)
    y = bmesh.coord[node,2]
   
    # Retorna as coordenadas
-   return x,y
+   return [x;y]
 
 end
 
@@ -39,7 +39,7 @@ function Coord(bmesh::Bmesh3D,node::Int64)
   z = bmesh.coord[node,3]
        
   # Retorna as coordenadas
-  return x,y,z
+  return [x;y;z]
 
 end
 
