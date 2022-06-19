@@ -71,6 +71,9 @@ function Plot_structure(bmesh::Bmesh2D;
     # If the displacement vector is given
     if length(U)>0
 
+        # Check size
+        @assert length(U)==2*bmesh.nn "Plot_structure:: length of U must be 2*number of nodes
+    
         # Normalize
         U ./= norm(U)
 
@@ -190,6 +193,9 @@ function Plot_structure(bmesh::Bmesh3D;
     # If the displacement vector is given
     if length(U)>0
 
+        # Check size
+        @assert length(U)==3*bmesh.nn "Plot_structure:: length of U must be 3*number of nodes
+    
         # Normalize
         U ./= norm(U)
 
@@ -201,6 +207,8 @@ function Plot_structure(bmesh::Bmesh3D;
             # recover the nodes
             nodes = Conect(bmesh,ele)
                     
+      @show nodes
+      
             # recover the coordinates
             c1 = Coord(bmesh,nodes[1])
             c2 = Coord(bmesh,nodes[2])
