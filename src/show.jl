@@ -213,6 +213,8 @@ function Plot_structure(bmesh::Bmesh3D;
             c1 = Coord(bmesh,nodes[1])
             c2 = Coord(bmesh,nodes[2])
 
+      @show c1, c2
+      
             # Add the displacements
             pos = 3*(nodes[1]-1)+1; c1[1] +=  U[pos]*dscale
             pos = 3*(nodes[1]-1)+2; c1[2] +=  U[pos]*dscale
