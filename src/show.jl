@@ -4,7 +4,7 @@
 #
 function Plot_structure(bmesh::Bmesh2D;
                         U=[],
-                        dscale = 0.0,
+                        dscale = 1.0,
                         x=[],
                         N = [],
                         cutout = 1E-3,
@@ -72,7 +72,7 @@ function Plot_structure(bmesh::Bmesh2D;
     if length(U)>0
 
         # Check size
-        @assert length(U)==2*bmesh.nn "Plot_structure:: length of U must be 2*number of nodes
+        @assert length(U)==2*bmesh.nn "Plot_structure:: length of U must be 2*number of nodes"
     
         # Normalize
         U ./= norm(U)
@@ -126,7 +126,7 @@ end
 #
 function Plot_structure(bmesh::Bmesh3D;
                         U=[],
-                        dscale = 0.0,
+                        dscale = 1.0,
                         x=[],
                         N = [],
                         cutout = 1E-3,
@@ -194,7 +194,7 @@ function Plot_structure(bmesh::Bmesh3D;
     if length(U)>0
 
         # Check size
-        @assert length(U)==3*bmesh.nn "Plot_structure:: length of U must be 3*number of nodes
+        @assert length(U)==3*bmesh.nn "Plot_structure:: length of U must be 3*number of nodes"
     
         # Normalize
         U ./= norm(U)
