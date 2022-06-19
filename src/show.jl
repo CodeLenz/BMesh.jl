@@ -87,10 +87,10 @@ function Plot_structure(bmesh::Bmesh2D;
             c2 = Coord(bmesh,nodes[2])
 
             # Add the displacements
-            pos = 2*(node1-1)+1; c1[1] +=  U[pos]*dscale
-            pos = 2*(node1-1)+2; c1[2] +=  U[pos]*dscale
-            pos = 2*(node2-1)+1; c2[1] +=  U[pos]*dscale
-            pos = 2*(node2-1)+2; c2[2] +=  U[pos]*dscale
+            pos = 2*(nodes[1]-1)+1; c1[1] +=  U[pos]*dscale
+            pos = 2*(nodes[1]-1)+2; c1[2] +=  U[pos]*dscale
+            pos = 2*(nodes[2]-1)+1; c2[1] +=  U[pos]*dscale
+            pos = 2*(nodes[2]-1)+2; c2[2] +=  U[pos]*dscale
 
             
             # Tolerância para comparação
@@ -206,12 +206,13 @@ function Plot_structure(bmesh::Bmesh3D;
             c2 = Coord(bmesh,nodes[2])
 
             # Add the displacements
-            pos = 3*(node1-1)+1; c1[1] +=  U[pos]*dscale
-            pos = 3*(node1-1)+2; c1[2] +=  U[pos]*dscale
-            pos = 3*(node2-1)+1; c2[1] +=  U[pos]*dscale
-            pos = 3*(node2-1)+2; c2[2] +=  U[pos]*dscale
-            pos = 3*(node1-1)+3; c1[3] +=  U[pos]*dscale
-            pos = 3*(node2-1)+3; c2[3] +=  U[pos]*dscale
+            pos = 3*(nodes[1]-1)+1; c1[1] +=  U[pos]*dscale
+            pos = 3*(nodes[1]-1)+2; c1[2] +=  U[pos]*dscale
+            pos = 3*(nodes[1]-1)+3; c1[3] +=  U[pos]*dscale
+  
+            pos = 3*(nodes[2]-1)+1; c2[1] +=  U[pos]*dscale
+            pos = 3*(nodes[2]-1)+2; c2[2] +=  U[pos]*dscale
+            pos = 3*(nodes[2]-1)+3; c2[3] +=  U[pos]*dscale
 
             # Tolerância para comparação
             tol = 1.0/1E6 
