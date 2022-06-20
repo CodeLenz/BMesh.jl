@@ -5,7 +5,7 @@ module BMesh
    using LinearAlgebra, Plots
 
    # Local imports
-   include("bmesh.jl")
+   include("types.jl")
    include("bmesh_truss_2d.jl")
    include("bmesh_truss_3d.jl")
    include("bmesh_solid_2d.jl")
