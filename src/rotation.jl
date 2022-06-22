@@ -187,7 +187,7 @@ struct Rotation2D <: Rotation
         # Temos um caso particular, onde o elemento está rotacionando em torno do eixo Y
         if r.fe == 0.0 
       
-            mox = r.cos_xy
+            mox = r.cos_yx
         
             # Caso particular em que x local do elemento está na direção Y
             R =  [     0.0         mox        0.0;
