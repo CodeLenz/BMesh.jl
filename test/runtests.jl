@@ -16,3 +16,6 @@ include("test_base_truss3D.jl")
 
 # 2D Rotations
 include("test_rotation2D.jl")
+
+# 3D Rotations
+include("test_rotation3D.jl")
