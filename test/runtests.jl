@@ -1,5 +1,6 @@
 using Test
 using BMesh
+using LinearAlgebra
 
 # Method 2D
 include("test_b2D.jl")
