@@ -190,9 +190,9 @@ struct Rotation2D <: Rotation
             mox = r.cos_yx
         
             # Caso particular em que x local do elemento está na direção Y
-            R =  [     0.0         mox        0.0;
-                   -mox*cosd(r.α)   0.0     sind(r.α);
-                    sind(r.α)       0.0     cosd(r.α)]
+            R =  [     0.0         mox          0.0;
+                   -mox*cosd(r.α)   0.0     mox*sind(r.α);
+                    sind(r.α)       0.0       cosd(r.α)]
             
           else
         
