@@ -135,7 +135,7 @@ struct Rotation2D <: Rotation
         cos_xx = ΔX[1] / L
         # -sin
         #cos_yx = -sin(Θ) 
-        cos_yz = ΔX[2] / L
+        cos_yx = ΔX[2] / L
         # cos
         cos_yy = cos_xx
         # sin
