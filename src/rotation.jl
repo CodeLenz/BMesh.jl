@@ -22,7 +22,7 @@ struct Rotation3D <: Rotation
     cos_zz::Float64
   
     # Comprimento
-    L::Float64 
+    #L::Float64 
 
     # fe
     fe::Float64
@@ -83,7 +83,7 @@ struct Rotation3D <: Rotation
         end
 
         # Cria o dado
-        new(cos_xx, cos_yx, cos_zx, cos_xy, cos_yy, cos_zy, cos_xz, cos_yz, cos_zz, L, fe, α)
+        new(cos_xx, cos_yx, cos_zx, cos_xy, cos_yy, cos_zy, cos_xz, cos_yz, cos_zz, fe, α)
 
     end
 
@@ -106,10 +106,10 @@ struct Rotation2D <: Rotation
     cos_yy::Float64
   
     # Comprimento
-    L::Float64 
+    #L::Float64 
 
     # fe
-    fe::Float64
+    #fe::Float64
   
     # Default constructor
     function Rotation2D(bmesh::Bmesh2D, ele::Int64)
@@ -124,23 +124,25 @@ struct Rotation2D <: Rotation
         # Calcula os Δs
         ΔX = Xj .- Xi
         
-        Θ = atan(ΔX[2], ΔX[1])  
+        #Θ = atan(ΔX[2], ΔX[1])  
         
         # Comprimento do elemento
         L = norm(ΔX)
 
         # Cossenos diretores (X)
         # cos
-        cos_xx = cos(Θ) #ΔX[1] / L
+        #cos_xx = cos(Θ) 
+        cos_xx = ΔX[1] / L
         # -sin
-        cos_yx = -sin(Θ) #ΔX[2] / L
+        #cos_yx = -sin(Θ) 
+        cos_yz = ΔX[2] / L
         # cos
         cos_yy = cos_xx
         # sin
         cos_xy = -cos_yx
         
         # Calcula "d"
-        fe = abs(cos_xx)
+        #fe = abs(cos_xx)
  
         # Duas situações
         #if fe!=0.0
@@ -160,7 +162,7 @@ struct Rotation2D <: Rotation
         # end
 
         # Cria o dado
-        new(cos_xx, cos_yx, cos_xy, cos_yy, L, fe)
+        new(cos_xx, cos_yx, cos_xy, cos_yy)
 
     end
 
