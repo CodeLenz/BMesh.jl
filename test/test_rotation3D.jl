@@ -289,8 +289,7 @@
               0.0  0.0  0.0    c   0.0  -s;
               0.0  0.0  0.0    s   0.0   c]
 
-    @show T_matrix(b3,1,45)
-
+    
     # Direct
      @test all(T_matrix(b3,1,45).≈ refer)
  
@@ -366,8 +365,6 @@
               0.0  0.0  0.0     0.0  -s    c;
               0.0  0.0  0.0     0.0   c    s;
               0.0  0.0  0.0    -1.0  0.0  0.0]
-
-    @show T_matrix(b3,1,45)
 
     # Direct
      @test all(T_matrix(b3,1,45).≈ refer)
@@ -447,8 +444,6 @@
               0.0  0.0  0.0     0.0   s   -c;
               0.0  0.0  0.0     0.0   c    s;
               0.0  0.0  0.0     1.0  0.0  0.0]
-
-    @show T_matrix(b3,1,45)
 
     # Direct
      @test all(T_matrix(b3,1,45).≈ refer)
