@@ -12,3 +12,6 @@ include("test_base_truss2D.jl")
 
 # Base (truss 3D)
 include("test_base_truss3D.jl")
+
+# 2D Rotations
+include("test_rotation2D.jl")
