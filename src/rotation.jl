@@ -140,27 +140,7 @@ struct Rotation2D <: Rotation
         cos_yy = cos_xx
         # sin
         cos_xy = -cos_yx
-        
-        # Calcula "d"
-        #fe = abs(cos_xx)
- 
-        # Duas situações
-        #if fe!=0.0
-
-            # Eixo Y'
-        #    cos_xy = -(cos_xx*cos_yx)/fe
-        #    cos_yy =  (cos_xx^2)/fe
-            
-            
-        #else
-
-            # Eixo Y'
-        #    cos_xy =  -cos_yx
-        #    cos_yy =  0.0
-            
-            
-        # end
-
+       
         # Cria o dado
         new(cos_xx, cos_yx, cos_xy, cos_yy)
 
