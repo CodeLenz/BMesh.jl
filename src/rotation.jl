@@ -191,8 +191,8 @@ struct Rotation2D <: Rotation
         
             # Caso particular em que x local do elemento está na direção Y
             R =  [     0.0         mox        0.0;
-                   -mox*cos(r.α)   0.0     sin(r.α);
-                    sin(r.α)       0.0     cos(r.α)]
+                   -mox*cosd(r.α)   0.0     sind(r.α);
+                    sind(r.α)       0.0     cosd(r.α)]
             
           else
         
@@ -203,8 +203,8 @@ struct Rotation2D <: Rotation
         
             # Rotaciona em torno de X
             T2 = [1.0        0.0           0.0;
-                  0.0     cos(r.α)       sin(r.α);   
-                  0.0    -sin(r.α)       cos(r.α)]
+                  0.0     cosd(r.α)       sind(r.α);   
+                  0.0    -sind(r.α)       cosd(r.α)]
                    
             # rotacionamos => Primeiro em X e depois em z'    
             R = T1*T2
