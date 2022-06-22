@@ -59,7 +59,7 @@ struct Rotation3D <: Rotation
 
             # Eixo Y'
             cos_xy = -(cos_xx*cos_yx)/fe
-            cos_yy =  (-cos_zx^2+cos_xx^2)/fe
+            cos_yy =  (cos_zx^2+cos_xx^2)/fe
             cos_zy = -(cos_yx*cos_zx)/fe
 
             # Eixo Z´
