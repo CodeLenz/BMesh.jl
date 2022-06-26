@@ -87,7 +87,7 @@ struct Bmesh3D <: Bmesh
               
   
         # This should be relaxed for different elements
-        @assert etype==:truss3D  "Bmesh3D:: just :truss3D  by now"
+        @assert etype==:truss3D || etype==:solid3D "Bmesh3D:: invalid element type $etype"
         
         # Creates the data type
         new(etype,nn,ne,coord,connect, Lx, Ly, Lz, nx, ny, nz)
