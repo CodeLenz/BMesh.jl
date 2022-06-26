@@ -18,6 +18,8 @@
 
     # truss3D
     @test isa(Bmesh3D(etype,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz),Bmesh3D)
+    @test isa(Bmesh3D(:solid3D,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz),Bmesh3D)
+    
 
     #
     # Should throw assertion error 
@@ -40,7 +42,7 @@
 
     #
     # Should throw assertion error 
-    # @assert etype==:truss3D "Bmesh3D:: just :truss3D by now"
+    # @assert etype==:truss3D "Bmesh3D:: wrong element type
     @test_throws AssertionError Bmesh3D(:other,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz)
 
 end # Bmesh3D
