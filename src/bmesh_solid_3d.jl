@@ -11,13 +11,6 @@
 #
 #  We first create the mesh in the z=0 (xy) plane
 #  advancing plane by plane. 
-# 
-#     ____   
-#     |\/|
-#     |/\|  dy
-#     ----
-#      dx
-#
 #
 #
 function Bmesh_solid_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,nz::Int64,
@@ -38,8 +31,6 @@ function Bmesh_solid_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
     # The number of nodes is a function of both nx, ny and nz
     nn = (nz+1)*nn_plane
 
-    @show nn_plane, nn
-
     # The number of elements is also a function of nx and ny, and also
     # of the connectivity among the nodes. 
 
@@ -48,8 +39,6 @@ function Bmesh_solid_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
 
     # Total number of elements
     ne = (nz)*ne_plane 
-
-    @show ne_plane, ne
 
     # Now lets define two arrays. The first one contains the node
     # coordinates and the second one the connectivities
