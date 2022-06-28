@@ -2,7 +2,7 @@
 module BMesh
 
    # Dependencies
-   using LinearAlgebra, Plots
+   using LinearAlgebra, StaticArrays, Plots
 
    # Local imports
    include("types.jl")
