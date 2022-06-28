@@ -158,7 +158,7 @@ struct Rotation2D <: Rotation
     else
        return Rotation3D(bmesh,ele,α)
     end
-    
+        
  end
 
   #
@@ -166,10 +166,10 @@ struct Rotation2D <: Rotation
   # 
   function T_matrix(r::Rotation2D)
 
-      T = [r.cos_xx   r.cos_xy   0.0       0.0     ;
-           r.cos_yx   r.cos_yy   0.0       0.0     ;  
-             0.0        0.0    r.cos_xx   r.cos_xy ;
-             0.0        0.0    r.cos_yx   r.cos_yy ]
+      T = @SMatrix [r.cos_xx   r.cos_xy   0.0       0.0     ;
+                    r.cos_yx   r.cos_yy   0.0       0.0     ;  
+                      0.0        0.0    r.cos_xx   r.cos_xy ;
+                      0.0        0.0    r.cos_yx   r.cos_yy ]
   end
 
 
@@ -178,11 +178,11 @@ struct Rotation2D <: Rotation
   #
   function T_matrix(r::Rotation3D)
 
-       # Rotação em cada nó
-       R = zeros(3,3)
-
        # Rotação total
        T = zeros(6,6)
+    
+       # Bloco de zeros
+       z = @SMatrix zeros(3,3)
     
         # Temos um caso particular, onde o elemento está rotacionando em torno do eixo Y
         if r.fe == 0.0 
@@ -190,21 +190,21 @@ struct Rotation2D <: Rotation
             mox = r.cos_yx
         
             # Caso particular em que x local do elemento está na direção Y
-            R =  [     0.0         mox          0.0;
-                   -mox*cosd(r.α)   0.0     mox*sind(r.α);
-                    sind(r.α)       0.0       cosd(r.α)]
+            R =  @SMatrix [     0.0         mox          0.0;
+                            -mox*cosd(r.α)   0.0     mox*sind(r.α);
+                              sind(r.α)       0.0       cosd(r.α)]
             
           else
         
             # Matriz de rotação z' paralelo ao plano XZ
-            T1 = [r.cos_xx r.cos_yx r.cos_zx;
-                  r.cos_xy r.cos_yy r.cos_zy;
-                  r.cos_xz r.cos_yz r.cos_zz]
+            T1 = @SMatrix [r.cos_xx r.cos_yx r.cos_zx;
+                           r.cos_xy r.cos_yy r.cos_zy;
+                           r.cos_xz r.cos_yz r.cos_zz]
         
             # Rotaciona em torno de X
-            T2 = [1.0        0.0           0.0;
-                  0.0     cosd(r.α)       sind(r.α);   
-                  0.0    -sind(r.α)       cosd(r.α)]
+            T2 = @SMatrix [1.0        0.0           0.0;
+                           0.0     cosd(r.α)       sind(r.α);   
+                           0.0    -sind(r.α)       cosd(r.α)]
                    
             # rotacionamos => Primeiro em X e depois em z'    
             R = T1*T2
@@ -212,9 +212,7 @@ struct Rotation2D <: Rotation
             end
         
             # Posiciona R em T (aqui temos 4 blocos 3x3 pois temos 2 nós c 6 gdl cada)
-            T[1:3,1:3] .= R
-            T[4:6,4:6] .= R
-        
+            T = SMatrix{6,6,Float64}([R z ; z R])
             
             # Retorna a matriz de rotação
             return T
