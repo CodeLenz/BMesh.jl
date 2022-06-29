@@ -2,6 +2,13 @@
 #
 # 2D
 #
+"""
+  Plot the background mesh (2D)
+
+    plot(bmesh::Bmesh2D;  name="" )
+
+  A png file "name.png" is generated if name is not empty.
+"""
 import Plots:plot
 function plot(bmesh::Bmesh2D;  name="" )
    
@@ -46,6 +53,14 @@ end
 #
 # 3D
 #
+"""
+  Plot the background mesh (3D)
+
+    plot(bmesh::Bmesh3D;  name="" )
+
+  A png file "name.png" is generated if name is not empty.
+"""
+
 import Plots:plot
 function plot(bmesh::Bmesh3D; name="")
 
