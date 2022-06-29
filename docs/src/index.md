@@ -38,7 +38,7 @@ Bmesh_solid_3D
 ## Graphical output
 
 ```@docs
-plot
+BMesh.plot
 ```
 
 ## Auxiliary functions
