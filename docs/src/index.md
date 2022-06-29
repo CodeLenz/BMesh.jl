@@ -44,15 +44,15 @@ BMesh.plot
 ## Change of reference system
 
 ```@docs
-Rotaion
+Rotation
 ```
 
 ```@docs
-Rotaion2D
+Rotation2D
 ```
 
 ```@docs
-Rotaion3D
+Rotation3D
 ```
 
 ```@docs
