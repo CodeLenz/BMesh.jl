@@ -10,5 +10,5 @@ makedocs(
                ])
                
 deploydocs(;
-    repo="github.com/USERNAME/BMesh.jl",
+    repo="github.com/CodeLenz/BMesh.jl.git",
 )
