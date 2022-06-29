@@ -1,10 +1,17 @@
 #
 # Retorna os nós de um elemento
 #
+"""
+  Return the connectivities of element ele
+
+    Conect(bmesh::Bmesh,ele::Int64)
+
+  as an Int64 vector.  
+"""
 function Conect(bmesh::Bmesh,ele::Int64)
 
     # Consistência do elemento
-    0 < ele <= bmesh.ne || throw("Conec::elemento $ele não é válido")
+    0 < ele <= bmesh.ne || throw("Conec::invalid element $ele")
 
     # Retorna os nós do elemento
     return bmesh.connect[ele,:]
@@ -14,10 +21,17 @@ end
 #
 # Retorna as coordenadas de um nó
 #
+"""
+  Return the coordinates of node 
+
+    Coord(bmesh::Bmesh2D,node::Int64)
+
+  as a vector [x;y]
+"""
 function Coord(bmesh::Bmesh2D,node::Int64)
 
    # Consistência do nó
-   0 < node <= bmesh.nn || throw("Coord::nó $node não é válido")
+   0 < node <= bmesh.nn || throw("Coord:: invalid node $node")
 
    # Coordenadas
    x = bmesh.coord[node,1]
@@ -28,10 +42,17 @@ function Coord(bmesh::Bmesh2D,node::Int64)
 
 end
 
+"""
+  Return the coordinates of node 
+
+    Coord(bmesh::Bmesh3D,node::Int64)
+
+  as a vector [x;y;z]
+"""
 function Coord(bmesh::Bmesh3D,node::Int64)
 
   # Consistência do nó
-  0 < node <= bmesh.nn || throw("Coord::nó $node não é válido")
+  0 < node <= bmesh.nn || throw("Coord::invalid node $node")
 
   # Coordenadas
   x = bmesh.coord[node,1]
@@ -47,6 +68,13 @@ end
 # Calcula o comprimento entre os nós nodes[1] e nodes[2]
 # de um elemento
 #
+"""
+  Return the distance between two nodes of the element
+
+    Length(bmesh::Bmesh,ele::Int64;nodes=(1,2))
+
+  where the default is the distance between (local) nodes 1 and 2
+"""
 function Length(bmesh::Bmesh,ele::Int64;nodes=(1,2))
     
     # Nodes
@@ -68,12 +96,18 @@ end
 #
 # Monta o vetor de graus de liberdade do elemento
 #
+"""
+Return a 2*n vector with the global DOFs of element ele
+
+    DOFs(bmesh::Bmesh2D,ele::Int64)
+
+where n is the number of nodes of ele.
+"""
 function DOFs(bmesh::Bmesh2D,ele::Int64)
 
   # Determina quais são os gls GLOBAIS que são "acessados"
   # por esse elemento
   nodes = Conect(bmesh,ele)
-
 
   # Loop para gerar a saída
   dofs = Vector{Int64}(undef,2*length(nodes))
@@ -93,6 +127,13 @@ end
 #
 # Monta o vetor de graus de liberdade do elemento
 #
+"""
+Return a 3*n vector with the global DOFs of element ele
+
+    DOFs(bmesh::Bmesh3D,ele::Int64)
+
+where n is the number of nodes of ele.
+"""
 function DOFs(bmesh::Bmesh3D,ele::Int64)
 
   # Determina quais são os gls GLOBAIS que são "acessados"
