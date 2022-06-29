@@ -41,6 +41,26 @@ Bmesh_solid_3D
 BMesh.plot
 ```
 
+## Change of reference system
+
+```@docs
+Rotaion
+```
+
+```@docs
+Rotaion2D
+```
+
+```@docs
+Rotaion3D
+```
+
+```@docs
+T_matrix
+```
+
+
+
 ## Auxiliary functions
 
 ```@docs
