@@ -39,7 +39,7 @@ where
 
 Nodes are created from bottom left (0,0) to bottom right (0,Lx),row by row. 
 Horizontal elements are generated first, followed by vertical, diagonal / and
-then diagonal \.
+then the other diagonals.
     
 """
 function Bmesh_truss_2D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64)
