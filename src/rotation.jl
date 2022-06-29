@@ -1,6 +1,17 @@
+"""
+  Rotation
+
+Supertype for Rotation2D and Rotation3D
+"""
 abstract type Rotation end
 
+"""
+Rotation3D
 
+    Rotation3D(bmesh::Bmesh3D, ele::Int64, α=0.0)
+
+Evaluate the director cossines for element ele. α is the additional rotation for the local reference system.
+"""
 #
 # Structure containing the director cossines and length for each element
 #
@@ -95,6 +106,14 @@ struct Rotation3D <: Rotation
 #
 # Structure containing the director cossines and length for each element
 #
+"""
+Rotation2D
+
+    Rotation2D(bmesh::Bmesh3D, ele::Int64, α=0.0)
+
+Evaluate the director cossines for element ele.
+"""
+
 struct Rotation2D <: Rotation
 
     # Cossenos diretores x'
@@ -151,6 +170,14 @@ struct Rotation2D <: Rotation
   #
   # General driver for rotation
   #
+"""
+Rotation
+
+    Rotation(bmesh::Bmesh, ele::Int64, α=0.0)
+
+General driver for Rotation. It deploys the correct method for either 2D or 3D problems.
+"""
+
   function Rotations(bmesh::Bmesh,ele::Int64,α=0.0)
     
     if isa(bmesh,Bmesh2D)
@@ -164,6 +191,12 @@ struct Rotation2D <: Rotation
   #
   # Rotação 2D
   # 
+"""
+Evaluate the rotation matrix T that maps from global to local reference systems
+
+    T_matrix(r::Rotation2D)
+
+"""
   function T_matrix(r::Rotation2D)
 
       T = @SMatrix [r.cos_xx   r.cos_xy   0.0       0.0     ;
@@ -176,6 +209,13 @@ struct Rotation2D <: Rotation
   #
   # Rotação 3D
   #
+"""
+Evaluate the rotation matrix T that maps from global to local reference systems
+
+    T_matrix(r::Rotation3D)
+
+"""
+
   function T_matrix(r::Rotation3D)
 
        # Rotação total
@@ -222,6 +262,14 @@ struct Rotation2D <: Rotation
   #
   # General call to T_matrix
   #
+"""
+Evaluate the rotation matrix T that maps from global to local reference systems. This version
+evaluates Rotaion internally.
+
+    T_matrix(bmesh::Bmesh, ele::Int64, α=0.0)
+
+"""
+
   function T_matrix(bmesh::Bmesh, ele::Int64, α=0.0)
     
        r = Rotations(bmesh,ele,α)
