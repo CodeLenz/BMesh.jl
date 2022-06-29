@@ -2,6 +2,7 @@
 #
 # 2D
 #
+import Plots:plot
 """
   Plot the background mesh (2D)
 
@@ -9,7 +10,6 @@
 
   A png file "name.png" is generated if name is not empty.
 """
-import Plots:plot
 function plot(bmesh::Bmesh2D;  name="" )
    
   
@@ -60,8 +60,6 @@ end
 
   A png file "name.png" is generated if name is not empty.
 """
-
-import Plots:plot
 function plot(bmesh::Bmesh3D; name="")
 
 
