@@ -5,7 +5,6 @@
 # Ly -> length in Y
 # nx -> number of cells in x direction
 # ny -> number of cells in y direction
-# show -> false/true
 #
 #     ____   
 #     |\/|
@@ -15,8 +14,35 @@
 #
 #
 #
-function Bmesh_truss_2D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,
-                       showtruss=false)
+"""
+Generate a 2D background mesh for :truss2D elements
+
+    Bmesh_truss_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64)
+
+where
+
+    Lx  = length in X (horizonal direction)
+    nx  = number of divisions (elements) in X
+    Ly  = lenght in Y (vertical direction)
+    ny  = number of divisions (elements) in Y
+
+returns
+
+    Bmesh2D(:truss2D,nn,ne,coord,connect,Lx,Ly, nx,ny)
+
+where
+
+    nn      = number of nodes 
+    ne      = number of elements
+    coord   = matrix nn x 2 with nodal coordinates (x y) 
+    connect = matrix ne x 2 with connectivities
+
+Nodes are created from bottom left (0,0) to bottom right (0,Lx),row by row. 
+Horizontal elements are generated first, followed by vertical, diagonal / and
+then diagonal \.
+    
+"""
+function Bmesh_truss_2D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64)
 
     # Assertions
     @assert Lx>0 "Bmesh_truss_2D:: Lx must be > 0"
@@ -151,11 +177,6 @@ function Bmesh_truss_2D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,
 
     # Creates the datatype
     bmesh = Bmesh2D(:truss2D,nn,ne,coord,connect,Lx, Ly, nx, ny)
-
-    # Show the conectivities
-    if showtruss
-        Plot_structure(bmesh)
-    end
 
     # Return bmesh
     return bmesh
