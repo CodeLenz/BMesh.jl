@@ -56,9 +56,12 @@ Rotation3D
 ```
 
 ```@docs
-T_matrix
+Rotations
 ```
 
+```@docs
+T_matrix
+```
 
 
 ## Auxiliary functions
