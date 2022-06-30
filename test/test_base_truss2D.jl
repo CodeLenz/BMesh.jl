@@ -1,3 +1,13 @@
+macro isinferred(ex)
+ quote try
+          @inferred $ex
+          true
+       catch err
+         false
+       end
+ end
+end
+
 @testset "Base::truss2D" begin
 
     #                               2D 
@@ -40,7 +50,7 @@
     end
 
     # Check type stability
-    @test @inferred all(Conect(b2,1).==connect[1,:])
+    @isinferred Conect(b2,1)
     
     #
     # Coord
@@ -56,7 +66,7 @@
 
     
     # Check type stability
-    @test @inferred all(Coord(b2,1).==vec(coord[1,:]))    
+    @isinferred  Coord(b2,1)
         
     #
     # Length
@@ -75,7 +85,7 @@
     
     
     # Check type stability
-    @test @inferred Length(b2,1)==1.0
+    @isinferred  Length(b2,1)
         
     #
     # DOFs(bmesh::Bmesh2D,ele::Int64)
@@ -93,6 +103,6 @@
     
     
     # Check type stability
-    @test @inferred all(DOFs(b2,1) .== [1 ;2; 3; 4])
+    @isinferred  DOFs(b2,1)
         
 end
