@@ -63,6 +63,9 @@
         @test all(Conect(b3,i).==connect[i,:])
     end
 
+    # Check type stability
+    @isinferred Conect(b3,1)
+    
     #
     # Coord
     #
@@ -75,6 +78,9 @@
         @test all(Coord(b3,i).==vec(coord[i,:]))
     end
 
+    # Check type stability
+    @isinferred Coord(b3,1)    
+        
     #
     # Length
     #
@@ -102,7 +108,8 @@
     @test Length(b3,17) ≈ sqrt(3.0)
     @test Length(b3,18) ≈ sqrt(3.0)
     
-    
+    # Check type stability
+    @isinferred Length(b3,1)
     
     
     #
@@ -122,6 +129,7 @@
 
     @test all(DOFs(b3,18) .== [1;2;3;19;20;21])
     
-    
+    # Check type stability
+    @isinferred DOFs(b3,1)
     
 end
