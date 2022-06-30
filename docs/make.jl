@@ -10,5 +10,6 @@ makedocs(
                ])
                
 deploydocs(;
+    versions = nothing,
     repo="github.com/CodeLenz/BMesh.jl",
 )
