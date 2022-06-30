@@ -39,6 +39,9 @@
         @test all(Conect(b2,i).==connect[i,:])
     end
 
+    # Check type stability
+    @inferred Conect(b2,1)
+    
     #
     # Coord
     #
@@ -51,6 +54,10 @@
         @test all(Coord(b2,i).==vec(coord[i,:]))
     end
 
+    
+    # Check type stability
+    @inferred Coord(b2,1)    
+        
     #
     # Length
     #
@@ -67,6 +74,9 @@
     @test Length(b2,6) ≈ sqrt(2.0)
     
     
+    # Check type stability
+    @inferred Length(b2,1)
+        
     #
     # DOFs(bmesh::Bmesh2D,ele::Int64)
     #
@@ -82,5 +92,7 @@
     @test all(DOFs(b2,6) .== [7 ;8; 3; 4])
     
     
-    
+    # Check type stability
+    @inferred DOFs(b2,1)
+        
 end
