@@ -1,13 +1,3 @@
-macro isinferred(ex)
- quote try
-          @inferred $ex
-          true
-       catch err
-         false
-       end
- end
-end
-
 @testset "Base::truss2D" begin
 
     #                               2D 
