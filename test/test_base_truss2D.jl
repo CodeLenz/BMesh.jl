@@ -40,7 +40,7 @@
     end
 
     # Check type stability
-    @test @inferred Conect(b2,1).==connect[1,:]
+    @test @inferred all(Conect(b2,1).==connect[1,:])
     
     #
     # Coord
@@ -56,7 +56,7 @@
 
     
     # Check type stability
-    @test @inferred Coord(b2,1).==vec(coord[1,:])    
+    @test @inferred all(Coord(b2,1).==vec(coord[1,:]))    
         
     #
     # Length
@@ -93,6 +93,6 @@
     
     
     # Check type stability
-    @test @inferred DOFs(b2,1) .== [1 ;2; 3; 4]
+    @test @inferred all(DOFs(b2,1) .== [1 ;2; 3; 4])
         
 end
