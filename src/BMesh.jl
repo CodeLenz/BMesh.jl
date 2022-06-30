@@ -3,6 +3,7 @@ module BMesh
 
    # Dependencies
    using LinearAlgebra, StaticArrays, Plots
+   using Test:@inferred
 
    # Local imports
    include("types.jl")
@@ -21,5 +22,18 @@ module BMesh
    export Rotation, Rotation2D, Rotation3D, Rotations, T_matrix
    export Coord, Conect, DOFs, Length
    export Plot_structure
+
+   # Define a macro to help in testing
+   macro isinferred(ex)
+    quote try
+             @inferred $ex
+             true
+          catch err
+            false
+          end
+    end
+   end
+   
+   export @isinferred
 
 end #module
