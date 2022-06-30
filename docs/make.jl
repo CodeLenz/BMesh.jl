@@ -3,7 +3,7 @@ using BMesh
 using Documenter
 
 makedocs(
-         sitename = "BMesh",
+         sitename = "BMesh.jl",
          modules  = [BMesh],
          pages=[
                 "Home" => "index.md"
