@@ -1,6 +1,6 @@
 
 # BMesh
-Background mesh for topology optimization
+Background mesh and utilities for topology optimization
 
 Documentation: https://codelenz.github.io/BMesh/
 
