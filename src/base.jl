@@ -4,14 +4,14 @@
 """
   Return the connectivities of element ele
 
-    Conect(bmesh::Bmesh,ele::Int64)
+    Connect(bmesh::Bmesh,ele::Int64)
 
   as an Int64 vector.  
 """
-function Conect(bmesh::Bmesh,ele::Int64)
+function Connect(bmesh::Bmesh,ele::Int64)
 
     # Consistência do elemento
-    0 < ele <= bmesh.ne || throw("Conec::invalid element $ele")
+    0 < ele <= bmesh.ne || throw("Connect::invalid element $ele")
 
     # Retorna os nós do elemento
     return bmesh.connect[ele,:]
