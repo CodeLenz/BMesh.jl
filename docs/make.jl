@@ -1,5 +1,6 @@
-#push!(LOAD_PATH,"../src/")
-using BMesh
+push!(LOAD_PATH,"../src/")
+include("BMesh.jl")
+using .BMesh
 using Documenter
 
 makedocs(
