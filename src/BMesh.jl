@@ -20,7 +20,7 @@ module BMesh
    export Bmesh_truss_2D, Bmesh_truss_3D
    export Bmesh_solid_2D, Bmesh_solid_3D
    export Rotation, Rotation2D, Rotation3D, Rotations, T_matrix
-   export Coord, Conect, DOFs, Length
+   export Coord, Connect, DOFs, Length
    export Plot_structure
 
    # Define a macro to help in testing
