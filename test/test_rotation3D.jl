@@ -472,7 +472,7 @@
     
      # Test for L==0.0
      b3 = Bmesh_truss_3D(1.0,1,1.0,1,1.0,1)
-     b3.coord[2,:].=[0.0 0.0 0.0]
+     b3.coord[2,1] = 0.0
      @test_throws String Rotations(b3,1)
      
     
