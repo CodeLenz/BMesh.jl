@@ -46,10 +46,10 @@ struct Rotation3D <: Rotation
     function Rotation3D(bmesh::Bmesh3D, ele::Int64, α=0.0)
 
         # Descobre os nós do elemento
-        nos = Conect(bmesh,ele)
+        nos = Connect(bmesh,ele)
 
         # Descobre as coordenadas de cada um dos nós
-        Xi = Coord(bmesh,nos[1] )
+        Xi = Coord(bmesh,nos[1])
         Xj = Coord(bmesh,nos[2])
         
         # Calcula os Δs
@@ -58,6 +58,9 @@ struct Rotation3D <: Rotation
         # Comprimento do elemento
         L = norm(ΔX)
 
+        # Basic testing
+        L>0.0 || throw("Rotation3D:: Length cannot be zero for element $ele")
+    
         # Cossenos diretores (X)
         cos_xx = ΔX[1] / L
         cos_yx = ΔX[2] / L
@@ -134,7 +137,7 @@ struct Rotation2D <: Rotation
     function Rotation2D(bmesh::Bmesh2D, ele::Int64)
 
         # Descobre os nós do elemento
-        nos = Conect(bmesh,ele)
+        nos = Connect(bmesh,ele)
 
         # Descobre as coordenadas de cada um dos nós
         Xi = Coord(bmesh,nos[1])
@@ -148,6 +151,9 @@ struct Rotation2D <: Rotation
         # Comprimento do elemento
         L = norm(ΔX)
 
+        # Basic testing
+        L>0.0 || throw("Rotation2D:: Length cannot be zero for element $ele")
+    
         # Cossenos diretores (X)
         # cos
         #cos_xx = cos(Θ) 
