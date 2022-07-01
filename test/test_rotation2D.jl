@@ -187,4 +187,11 @@
     r = Rotations(b2_m45,1)
     @test isa(r,Rotation2D)
 
+    
+     # Test for L==0
+     b2 = Bmesh_truss_2D(1.0,1,1.0,1)
+     b2.coord[2,:].=[0.0 0.0]
+     @test_throws String Rotations(b2,1)
+    
+    
 end # Rotation2D
