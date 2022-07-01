@@ -67,7 +67,7 @@ T_matrix
 ## Auxiliary functions
 
 ```@docs
-Conect
+Connect
 ```
 
 ```@docs
