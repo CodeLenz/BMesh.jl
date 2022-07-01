@@ -32,15 +32,15 @@
     # Conect
     #
     # Should throw
-    @test_throws String Conect(b2,7) 
-    @test_throws String Conect(b2,-1) 
+    @test_throws String Connect(b2,7) 
+    @test_throws String Connect(b2,-1) 
     
     for i=1:ne
-        @test all(Conect(b2,i).==connect[i,:])
+        @test all(Connect(b2,i).==connect[i,:])
     end
 
     # Check type stability
-    @isinferred Conect(b2,1)
+    @isinferred Connect(b2,1)
     
     #
     # Coord
