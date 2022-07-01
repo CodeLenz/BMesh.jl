@@ -4,7 +4,7 @@
 
     #
     #    Valid inputs (no error)
-    #             Cross
+    #          
     #
     nn = 8
     ne = 18
@@ -55,10 +55,11 @@
     #
     # Conect
     #
-    # Should throw
+    # Should throw - invalid elements
     @test_throws String Connect(b3,20) 
     @test_throws String Connect(b3,-1) 
     
+    # Valid tests
     for i=1:ne
         @test all(Connect(b3,i).==connect[i,:])
     end
@@ -70,10 +71,11 @@
     # Coord
     #
 
-    # Should throw 
+    # Should throw - invalid nodes
     @test_throws String Coord(b3,10) 
     @test_throws String Coord(b3,-1) 
 
+    # Valid tests
     for i=1:nn
         @test all(Coord(b3,i).==vec(coord[i,:]))
     end
@@ -85,10 +87,11 @@
     # Length
     #
 
-    # Should throw (by calling Conect)
+    # Should throw (by calling Conect - invalid elements)
     @test_throws String Length(b3,20)
     @test_throws String Length(b3,-1)
 
+    # Valid tests
     @test Length(b3,1)==1.0
     @test Length(b3,2)==1.0
     @test Length(b3,3)==1.0
@@ -115,11 +118,11 @@
     #
     # DOFs(bmesh::Bmesh2D,ele::Int64)
     #
-    # Should throw (by calling Conect)
+    # Should throw (by calling Conect - wrong elements)
     @test_throws String DOFs(b3,20)
     @test_throws String DOFs(b3,-1)
 
-    # Plane (z=0)
+    # Valid tests - Plane (z=0)
     @test all(DOFs(b3,1) .== [1;2;3;4;5;6])
     @test all(DOFs(b3,2) .== [4;5;6;7;8;9])
     @test all(DOFs(b3,3) .== [7;8;9;10;11;12])
@@ -127,6 +130,7 @@
     @test all(DOFs(b3,5) .== [1;2;3;7;8;9])
     @test all(DOFs(b3,6) .== [10;11;12;4;5;6])
 
+    # Valid test - out of plane
     @test all(DOFs(b3,18) .== [1;2;3;19;20;21])
     
     # Check type stability

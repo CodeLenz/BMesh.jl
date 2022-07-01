@@ -75,8 +75,7 @@
     @test all(isapprox(T_matrix(r),refer;atol=1E-12))
 
 
-    # 180 degrees
-
+    # Set one element to 180 degrees
     nn = 2
     ne = 1
     coord = [0.0 0.0 ;
@@ -111,7 +110,7 @@
     @test all(isapprox(T_matrix(r),refer;atol=1E-12))
 
 
-    # -90
+    # Set one element to -90
 
     nn = 2
     ne = 1
@@ -147,7 +146,7 @@
     @test all(isapprox(T_matrix(r),refer;atol=1E-12))
 
 
-    # -45
+    # Set one element to -45
 
     nn = 2
     ne = 1
@@ -188,10 +187,10 @@
     @test isa(r,Rotation2D)
 
     
-     # Test for L==0
-     b2 = Bmesh_truss_2D(1.0,1,1.0,1)
-     b2.coord[2,1] = 0.0
-     @test_throws String Rotations(b2,1)
+    # Test for L==0
+    b2 = Bmesh_truss_2D(1.0,1,1.0,1)
+    b2.coord[2,1] = 0.0
+    @test_throws String Rotations(b2,1)
     
     
 end # Rotation2D

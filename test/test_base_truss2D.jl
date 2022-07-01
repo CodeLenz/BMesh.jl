@@ -4,7 +4,7 @@
 
     #
     #    Valid inputs (no error)
-    #             Cross
+    #            
     #
     nn = 4
     ne = 6
@@ -31,10 +31,11 @@
     #
     # Conect
     #
-    # Should throw
+    # Should throw - invalid elements  
     @test_throws String Connect(b2,7) 
     @test_throws String Connect(b2,-1) 
     
+    # Valid tests
     for i=1:ne
         @test all(Connect(b2,i).==connect[i,:])
     end
@@ -46,10 +47,11 @@
     # Coord
     #
 
-    # Should throw 
+    # Should throw - invalid nodes
     @test_throws String Coord(b2,5) 
     @test_throws String Coord(b2,-1) 
 
+    # Valid tests
     for i=1:nn
         @test all(Coord(b2,i).==vec(coord[i,:]))
     end
@@ -62,10 +64,11 @@
     # Length
     #
 
-    # Should throw (by calling Conect)
+    # Should throw (by calling Conect - wrong elements)
     @test_throws String Length(b2,7)
     @test_throws String Length(b2,-1)
 
+    # Valid tests
     @test Length(b2,1)==1.0
     @test Length(b2,2)==1.0
     @test Length(b2,3)==1.0
@@ -80,18 +83,18 @@
     #
     # DOFs(bmesh::Bmesh2D,ele::Int64)
     #
-    # Should throw (by calling Conect)
+    # Should throw (by calling Conect - wrong elements)
     @test_throws String DOFs(b2,7)
     @test_throws String DOFs(b2,-1)
 
+    # Valid tests
     @test all(DOFs(b2,1) .== [1 ;2; 3; 4])
     @test all(DOFs(b2,2) .== [3 ;4; 5; 6])
     @test all(DOFs(b2,3) .== [5 ;6; 7; 8])
     @test all(DOFs(b2,4) .== [7 ;8; 1; 2])
     @test all(DOFs(b2,5) .== [1 ;2; 5; 6])
     @test all(DOFs(b2,6) .== [7 ;8; 3; 4])
-    
-    
+        
     # Check type stability
     @isinferred  DOFs(b2,1)
         
