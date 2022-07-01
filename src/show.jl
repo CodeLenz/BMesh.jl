@@ -26,7 +26,7 @@ function plot(bmesh::Bmesh2D;  name="" )
     for ele=1:ne
 
         # recover the nodes
-        nodes = Conect(bmesh,ele)
+        nodes = Connect(bmesh,ele)
         
         # recover the coordinates
         c1 = Coord(bmesh,nodes[1])
@@ -77,7 +77,7 @@ function plot(bmesh::Bmesh3D; name="")
     for ele=1:ne
 
         # recover the nodes
-        nodes = Conect(bmesh,ele)
+        nodes = Connect(bmesh,ele)
                 
         # recover the coordinates
         c1 = Coord(bmesh,nodes[1])
