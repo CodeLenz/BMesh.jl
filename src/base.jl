@@ -78,7 +78,7 @@ end
 function Length(bmesh::Bmesh,ele::Int64;nodes=(1,2))
     
     # Nodes
-    n = Conect(bmesh,ele)
+    n = Connect(bmesh,ele)
     
     # Basic assertions
     nodes[1] <= maximum(n) || throw("Length::nodes[1] is larger than the maximum number of nodes for this element")
@@ -107,7 +107,7 @@ function DOFs(bmesh::Bmesh2D,ele::Int64)
 
   # Determina quais são os gls GLOBAIS que são "acessados"
   # por esse elemento
-  nodes = Conect(bmesh,ele)
+  nodes = Connect(bmesh,ele)
 
   # Loop para gerar a saída
   dofs = Vector{Int64}(undef,2*length(nodes))
@@ -138,7 +138,7 @@ function DOFs(bmesh::Bmesh3D,ele::Int64)
 
   # Determina quais são os gls GLOBAIS que são "acessados"
   # por esse elemento
-  nodes = Conect(bmesh,ele)
+  nodes = Connect(bmesh,ele)
 
   # Loop para gerar a saída
   dofs = Vector{Int64}(undef,3*length(nodes))
