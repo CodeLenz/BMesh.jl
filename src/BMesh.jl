@@ -38,8 +38,8 @@ module BMesh
    export @isinferred
 
  macro nothrow(ex)
-    quote try
-             @test $ex
+    quote @test try
+           $ex
              true
           catch err
             false
