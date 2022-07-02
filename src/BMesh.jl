@@ -37,15 +37,4 @@ module BMesh
    
    export @isinferred
 
- macro to_bool(ex)
-    quote  try
-           $ex
-             true
-          catch err
-            false
-          end
-    end
- end
-   
- export @to_bool
 end #module
