@@ -3,7 +3,8 @@ module BMesh
 
    # Dependencies
    using LinearAlgebra, StaticArrays, Plots
-   using Test:@inferred, @test
+   using Test:@inferred
+   using Test:@test
 
    # Local imports
    include("types.jl")
