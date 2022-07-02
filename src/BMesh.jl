@@ -4,7 +4,7 @@ module BMesh
    # Dependencies
    using LinearAlgebra, StaticArrays, Plots
    using Test:@inferred
-   using Test:@test
+   
 
    # Local imports
    include("types.jl")
@@ -37,8 +37,8 @@ module BMesh
    
    export @isinferred
 
- macro nothrow(ex)
-    quote @test try
+ macro to_bool(ex)
+    quote  try
            $ex
              true
           catch err
@@ -47,5 +47,5 @@ module BMesh
     end
  end
    
- export @nothrow
+ export @to_bool
 end #module
