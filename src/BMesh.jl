@@ -23,7 +23,7 @@ module BMesh
    export Coord, Connect, DOFs, Length
    export Plot_structure
 
-   # Define a macro to help in testing
+   # Define macros to help in testing
    macro isinferred(ex)
     quote try
              @inferred $ex
@@ -36,4 +36,15 @@ module BMesh
    
    export @isinferred
 
+ macro nothrow(ex)
+    quote try
+             @test $ex
+             true
+          catch err
+            false
+          end
+    end
+ end
+   
+ export @nothrow
 end #module
