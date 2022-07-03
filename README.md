@@ -2,7 +2,7 @@
 # BMesh
 Background mesh and utilities for topology optimization
 
-https://codelenz.github.io/BMesh/
+https://codelenz.github.io/BMesh.jl/
 
 ```julia
 using BMesh, Plots
