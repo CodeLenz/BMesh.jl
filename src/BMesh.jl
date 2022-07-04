@@ -24,6 +24,31 @@ module BMesh
    export Coord, Connect, DOFs, Length
    export Plot_structure
 
+   #
+   # Precompilations
+   # 
+   
+   precompile(Rotations,(Bmesh2D,Int64,Float64))
+   precompile(Rotations,(Bmesh3D,Int64,Float64))
+
+   precompile(T_matrix, (Bmesh2D,Int64,Float64)) 
+   precompile(T_matrix, (Bmesh3D,Int64,Float64)) 
+   precompile(T_matrix, (Rotation2D,)) 
+   precompile(T_matrix, (Rotation3D,)) 
+
+   precompile(Connect, (Bmesh2D,Int64))
+   precompile(Connect, (Bmesh3D,Int64))
+
+   precompile(Coord, (Bmesh2D,Int64))
+   precompile(Coord, (Bmesh3D,Int64))
+
+   precompile(Length, (Bmesh2D,Int64,Tuple{Int64,Int64}))
+   precompile(Length, (Bmesh3D,Int64,Tuple{Int64,Int64}))
+   
+   precompile(DOFs, (Bmesh2D,Int64))
+   precompile(DOFs, (Bmesh3D,Int64))
+
+   
    # Define macros to help in testing
    macro isinferred(ex)
     quote try
