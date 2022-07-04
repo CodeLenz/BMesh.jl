@@ -5,6 +5,9 @@ module BMesh
    using LinearAlgebra, StaticArrays, Plots
    using Test:@inferred
    
+   if isdefined(Base, :Experimental) && isdefined(Base.Experimental, Symbol("@optlevel"))
+       @eval Base.Experimental.@optlevel 3
+   end
 
    # Local imports
    include("types.jl")
