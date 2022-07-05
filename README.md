@@ -5,7 +5,7 @@ Background mesh and utilities for topology optimization
 https://codelenz.github.io/BMesh.jl/
 
 ```julia
-using BMesh, Plots
+using BMesh
 
 # 2D background mesh in a 1 x 1  domain with 2 divisions in X and 3 in Y
 b2 = Bmesh_truss_2D(1.0,2,1.0,3)
