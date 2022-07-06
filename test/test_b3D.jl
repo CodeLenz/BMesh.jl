@@ -69,7 +69,7 @@ end # Bmesh3D
     origin = (1.0,2.0,3.0)
 
     # truss3D
-    b3o = Bmesh3D(etype,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz)
+    b3o = Bmesh3D(etype,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz,origin=origin)
 
     # Coordinates of node 1
     @test b3o.coord[1,1] == origin[1]
@@ -80,7 +80,7 @@ end # Bmesh3D
     # Coordinates of the last node
     @test b3o.coord[end,1] == Lx+origin[1]
     @test b3o.coord[end,2] == Ly+origin[2]
-    @test b3o.coord[end,3] == Ly+origin[3]
+    @test b3o.coord[end,3] == Lz+origin[3]
 
 
 
@@ -109,7 +109,7 @@ end # Bmesh3D
     origin = (1.0,2.0,3.0)
 
     # truss3D
-    b3o = Bmesh3D(etype,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz)
+    b3o = Bmesh3D(etype,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz,origin=origin)
 
     # Coordinates of node 1
     @test b3o.coord[1,1] == origin[1]
@@ -120,6 +120,6 @@ end # Bmesh3D
     # Coordinates of the last node
     @test b3o.coord[end,1] == Lx+origin[1]
     @test b3o.coord[end,2] == Ly+origin[2]
-    @test b3o.coord[end,3] == Ly+origin[3]
+    @test b3o.coord[end,3] == Lz+origin[3]
 
 end
