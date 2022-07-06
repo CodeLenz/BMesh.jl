@@ -135,11 +135,11 @@ function Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
                 coord[cont,3] = z
             end #j
             # reset x
-            x = -dx
+            x = origin[1]-dx
         end #i
         # Reset both x and y (start a new plane) 
-        x = -dx
-        y = -dy
+        x = origin[1]-dx
+        y = origin[2]-dy
     end #k
     
     #

@@ -91,7 +91,7 @@ function Bmesh_truss_2D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64;
             coord[cont,2] = y
         end #j
         # reset x
-        x = -dx
+        x = origin[1]-dx
     end #i
 
     # Now that we have the coordinates, lets generate the connectivities.

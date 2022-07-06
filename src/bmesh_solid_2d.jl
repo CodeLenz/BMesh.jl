@@ -52,7 +52,7 @@ function Bmesh_solid_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64;
              cont += 1
              coord[cont,:] = [x y]
          end #i
-         x = -dx
+         x = origin[1]-dx
      end #j
 
      # Gera a matrix de conectividades

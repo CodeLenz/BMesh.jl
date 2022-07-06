@@ -46,7 +46,7 @@ Connectivities follow the same pattern.
 
 """
 function Bmesh_solid_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,nz::Int64;
-                        coordinates=(0.0,0.0,0.0))
+                        origin=(0.0,0.0,0.0))
 
     # Assertions
     @assert Lx>0 "Bmesh_solid_3D:: Lx must be > 0"
@@ -83,9 +83,9 @@ function Bmesh_solid_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
     dz = Lz/nz
 
     # Initial coordinates
-    x = coordinates[1]-dx
-    y = coordinates[2]-dy
-    z = coordinates[3]-dz
+    x = origin[1]-dx
+    y = origin[2]-dy
+    z = origin[3]-dz
 
     # Lets generate the coordinates, bottom to top, left to rigth
     cont = 0
@@ -108,11 +108,11 @@ function Bmesh_solid_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
                 coord[cont,3] = z
             end #j
             # reset x
-            x = -dx
+            x = origin[1]-dx
         end #i
         # Reset both x and y (start a new plane) 
-        x = -dx
-        y = -dy
+        x = origin[1]-dx
+        y = origin[2]-dy
     end #k
 
     #
