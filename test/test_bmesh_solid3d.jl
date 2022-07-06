@@ -33,9 +33,9 @@
     @test bm1.coord[1,2] == origin[2]
     @test bm1.coord[1,3] == origin[3]
 
-    @test bm1.coord[end,1] == Lx + origin[1]
-    @test bm1.coord[end,2] == Ly + origin[2]
-    @test bm1.coord[end,3] == Lz + origin[3]
+    @test isapprox(bm1.coord[end,1] , Lx + origin[1])
+    @test isapprox(bm1.coord[end,2] , Ly + origin[2])
+    @test isapprox(bm1.coord[end,3] , Lz + origin[3])
 
 
      

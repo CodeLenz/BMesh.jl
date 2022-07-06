@@ -28,8 +28,8 @@
     @test bm1.coord[1,1] == origin[1]
     @test bm1.coord[1,2] == origin[2]
 
-    @test bm1.coord[end,1] == Lx + origin[1]
-    @test bm1.coord[end,2] == Ly + origin[2]
+    @test isapprox(bm1.coord[end,1] , Lx + origin[1] )
+    @test isapprox(bm1.coord[end,2] , Ly + origin[2] )
     
 
     #
