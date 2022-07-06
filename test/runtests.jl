@@ -8,6 +8,12 @@ include("test_b2D.jl")
 # Method 3D
 include("test_b3D.jl")
 
+# Mesh generators
+include("test_bmesh_truss2d.jl")
+include("test_bmesh_truss3d.jl")
+include("test_bmesh_solid2d.jl")
+include("test_bmesh_solid3d.jl")
+
 # Base (truss 2D)
 include("test_base_truss2D.jl")
 
