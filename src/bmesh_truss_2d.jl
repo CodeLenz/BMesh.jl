@@ -17,7 +17,8 @@
 """
 Generate a 2D background mesh for :truss2D elements
 
-    Bmesh_truss_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64)
+    Bmesh_truss_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64;
+                   origin=(0.0,0.0))
 
 where
 
@@ -25,6 +26,7 @@ where
     nx  = number of divisions (elements) in X
     Ly  = lenght in Y (vertical direction)
     ny  = number of divisions (elements) in Y
+    origin = coordinates of node 1
 
 returns
 
@@ -42,7 +44,8 @@ Horizontal elements are generated first, followed by vertical, diagonal / and
 then the other diagonals.
     
 """
-function Bmesh_truss_2D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64)
+function Bmesh_truss_2D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64;
+                        origin=(0.0,0.0))
 
     # Assertions
     @assert Lx>0 "Bmesh_truss_2D:: Lx must be > 0"
@@ -69,8 +72,8 @@ function Bmesh_truss_2D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64)
     dy = Ly/ny
 
     # Initial coordinates
-    x = -dx
-    y = -dy
+    x = origin[1]-dx
+    y = origin[2]-dy
 
     # Lets generate the coordinates, bottom to top, left to rigth
     cont = 0

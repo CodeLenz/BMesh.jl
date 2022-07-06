@@ -16,7 +16,8 @@
 """
 Generate a 3D background mesh for 8-node solid elements (:solid3D)
 
-    Bmesh_solid_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,nz::Int64)
+    Bmesh_solid_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,nz::Int64;
+                   origin=(0.0,0.0,0.0))
 
 where
 
@@ -26,6 +27,7 @@ where
     ny  = number of divisions (elements) in Y
     Lz  = lenght in Z (vertical direction)
     nz  = number of divisions (elements) in Z
+    origin = coordinates of node 1
 
 returns
 
@@ -43,7 +45,8 @@ Nodes are generated plane by plane, from z=0 to z=Lz.
 Connectivities follow the same pattern.
 
 """
-function Bmesh_solid_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,nz::Int64)
+function Bmesh_solid_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,nz::Int64;
+                        coordinates=(0.0,0.0,0.0))
 
     # Assertions
     @assert Lx>0 "Bmesh_solid_3D:: Lx must be > 0"
@@ -80,9 +83,9 @@ function Bmesh_solid_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
     dz = Lz/nz
 
     # Initial coordinates
-    x = -dx
-    y = -dy
-    z = -dz
+    x = coordinates[1]-dx
+    y = coordinates[2]-dy
+    z = coordinates[3]-dz
 
     # Lets generate the coordinates, bottom to top, left to rigth
     cont = 0

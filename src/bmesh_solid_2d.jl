@@ -1,7 +1,8 @@
 """
 Generate a 2D background mesh for 4-node solid (planar) elements (:solid2D)
 
-    Bmesh_solid_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64)
+    Bmesh_solid_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64;
+                   origin=(0.0,0.0) )
 
 where
 
@@ -9,6 +10,7 @@ where
     nx  = number of divisions (elements) in X
     Ly  = lenght in Y (vertical direction)
     ny  = number of divisions (elements) in Y
+    origin = coordinates of node 1
 
 returns
 
@@ -22,7 +24,8 @@ where
     connect = matrix ne x 4 with connectivities
 
 """
-function Bmesh_solid_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64)
+function Bmesh_solid_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64;
+                        coordinates=(0.0,0.0))
 
      # Primeiro geramos os nós de baixo para cima, esquerda para a direita
      nn = (nx+1)*(ny+1)
@@ -33,8 +36,8 @@ function Bmesh_solid_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64)
      dy = Ly / ny
 
      # Gera a matrix de coordenadas nodais
-     x = -dx
-     y = -dy
+     x = origin[1]-dx
+     y = origin[2]-dy
      cont = 0
      for j=1:ny+1
          y += dy

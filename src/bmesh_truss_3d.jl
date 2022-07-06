@@ -23,7 +23,8 @@
 """
 Generate a 3D background mesh for truss:3D elements
 
-    Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,nz::Int64)
+    Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,nz::Int64;
+                   origin=(0.0,0.0,0.0))
 
 where
 
@@ -33,6 +34,7 @@ where
     ny  = number of divisions (elements) in Y
     Lz  = lenght in Z (vertical direction)
     nz  = number of divisions (elements) in Z
+    origin = coordinates of node 1
 
 returns
 
@@ -50,8 +52,8 @@ Nodes are generated plane by plane, from z=0 to z=Lz.
 Connectivities follow the same pattern.
 
 """
-function Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,nz::Int64,
-                        showtruss=false)
+function Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,nz::Int64;
+                        origin=(0.0,0.0,0.0))
 
     # Assertions
     @assert Lx>0 "Bmesh_truss_3D:: Lx must be > 0"
@@ -108,9 +110,9 @@ function Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
     dz = Lz/nz
 
     # Initial coordinates
-    x = -dx
-    y = -dy
-    z = -dz
+    x = origin[1]-dx  
+    y = origin[2]-dy
+    z = origin[3]-dz
 
     # Lets generate the coordinates, bottom to top, left to rigth
     cont = 0
@@ -475,11 +477,6 @@ function Bmesh_truss_3D(Lx::Float64,nx::Int64,Ly::Float64,ny::Int64,Lz::Float64,
 
     # Creates the datatype
     bmesh = Bmesh3D(:truss3D,nn,ne,coord,connect, Lx, Ly, Lz, nx, ny, nz)
-
-    # Show the conectivities
-    if showtruss
-      Plot_structure(bmesh)
-    end
 
     # Return bmesh
     return bmesh
