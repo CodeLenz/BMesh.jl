@@ -25,7 +25,13 @@ where
 
 """
 function Bmesh_solid_2D(Lx::Float64, nx::Int64, Ly::Float64, ny::Int64;
-                        coordinates=(0.0,0.0))
+                        origin=(0.0,0.0))
+
+     # Assertions
+     @assert Lx>0  "Bmesh_solid_2D:: Lx must be > 0"
+     @assert Ly>0  "Bmesh_solid_2D:: Ly must be > 0"
+     @assert nx>=1 "Bmesh_solid_2D:: nx must be >= 1"
+     @assert ny>=1 "Bmesh_solid_2D:: ny must be >= 1"
 
      # Primeiro geramos os nós de baixo para cima, esquerda para a direita
      nn = (nx+1)*(ny+1)

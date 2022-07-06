@@ -31,4 +31,26 @@
     @test bm1.coord[end,1] == Lx + origin[1]
     @test bm1.coord[end,2] == Ly + origin[2]
     
+
+#
+    # Test assertions
+    #
+    #@assert Lx>0 "Bmesh_solid_2D:: Lx must be > 0"
+    #@assert Ly>0 "Bmesh_solid_2D:: Ly must be > 0"
+    #@assert nx>=1 "Bmesh_solid_2D:: nx must be >= 1"
+    #@assert ny>=1 "Bmesh_solid_2D:: ny must be >= 1"
+
+    @test_throws AssertionError Bmesh_solid_2D(0.0,nx,Ly,ny)
+    @test_throws AssertionError Bmesh_solid_2D(-1.0,nx,Ly,ny)
+
+    @test_throws AssertionError Bmesh_solid_2D(Lx,0,Ly,ny)
+    @test_throws AssertionError Bmesh_solid_2D(Lx,-1,Ly,ny)
+
+    @test_throws AssertionError Bmesh_solid_2D(Lx,nx,0.0,ny)
+    @test_throws AssertionError Bmesh_solid_2D(Lx,nx,-1.0,ny)
+
+    @test_throws AssertionError Bmesh_solid_2D(Lx,nx,Ly,0)
+    @test_throws AssertionError Bmesh_solid_2D(Lx,nx,Ly,-1)
+    
+
 end
