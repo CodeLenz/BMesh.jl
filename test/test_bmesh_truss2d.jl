@@ -10,7 +10,7 @@
     # Default origin
     bm1 = Bmesh_truss_2D(Lx,nx,Ly,ny)
 
-    @test isa(bm1,BMesh2D)
+    @test isa(bm1,Bmesh2D)
 
     @test bm1.coord[1,1]==0.0
     @test bm1.coord[1,2]==0.0
@@ -23,7 +23,7 @@
     
     bm1 = Bmesh_truss_2D(Lx,nx,Ly,ny, origin=origin)
 
-    @test isa(bm1,BMesh2D)
+    @test isa(bm1,Bmesh2D)
 
     @test bm1.coord[1,1] == origin[1]
     @test bm1.coord[1,2] == origin[2]
