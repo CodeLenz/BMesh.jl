@@ -25,3 +25,6 @@ include("test_rotation2D.jl")
 
 # 3D Rotations
 include("test_rotation3D.jl")
+
+# Merge
+include("test_merge.jl")

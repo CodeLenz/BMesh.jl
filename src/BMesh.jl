@@ -19,6 +19,7 @@ module BMesh
    include("rotation.jl")
    include("show.jl")
    include("gmsh.jl")
+   include("merge.jl")
    
 
    export Bmesh, Bmesh2D, Bmesh3D
@@ -28,7 +29,8 @@ module BMesh
    export Coord, Connect, DOFs, Length
    export Plot_structure
    export Gmsh_init
-   
+   export Merge
+
    # Define macros to help in testing
    macro isinferred(ex)
     quote try

@@ -1,7 +1,13 @@
-#
-# Merge two bmeshes and create a new one
-#
-function Merge(b1::Bmesh, b2::Bmesh, atol=1E-5)
+"""
+Merge two BMeshes and return a new one
+
+    Merge(b1::Bmesh, b2::Bmesh; atol=1E-5)
+
+The first bmesh is kept and the second bmesh is edited
+to delete repeated nodes end elments.
+
+"""
+function Merge(b1::Bmesh, b2::Bmesh; atol=1E-5)
 
     # The two meshes must be 2D or 3D
     #isa(b1,Bmesh2D) && isa(b2,Bmesh2D) || throw("Merge: both Bmeshes must have the same dimensionality")
@@ -173,143 +179,3 @@ function Merge(b1::Bmesh, b2::Bmesh, atol=1E-5)
 
 end
 
-
-function T1()
-    # Test
-    Lx = 1.0
-    Ly = 1.0
-    nx = 1
-    ny = 1
-
-    #
-    #  b1(3)   b1(4)
-    #
-    #  b1(1)   b1(2)
-    #
-    b1 = Bmesh_solid_2D(Lx,nx,Ly,ny)
-
-    # offset para a direita
-    #
-    #        b2(3)   b2(4)
-    #
-    #        b2(1)   b2(2)
-    #
-    b2 = Bmesh_solid_2D(Lx,nx,Ly,ny,origin=(1.0,0.0))
-
-    # Test merge
-    #
-    #   b1(3)   b1(4)b2(3)   b2(4)
-    #
-    #
-    #   b1(1)   b1(2)b2(1)   b2(2)
-    #
-    # Então os nós vão ser
-    #
-    #  (3)   (4)   (6)
-    #
-    #  (1)   (2)   (5)
-    #
-    #
-    Merge(b1,b2)
-
-end
-
-
-function T2()
-    # Test
-    Lx = 1.0
-    Ly = 1.0
-    nx = 1
-    ny = 1
-
-    #
-    #  b1(3)   b1(4)
-    #
-    #  b1(1)   b1(2)
-    #
-    b1 = Bmesh_truss_2D(Lx,nx,Ly,ny)
-
-    # offset para a direita
-    #
-    #        b2(3)   b2(4)
-    #
-    #        b2(1)   b2(2)
-    #
-    b2 = Bmesh_truss_2D(Lx,nx,Ly,ny,origin=(1.0,0.0))
-
-    # Test merge
-    #
-    #   b1(3)   b1(4)b2(3)   b2(4)
-    #
-    #
-    #   b1(1)   b1(2)b2(1)   b2(2)
-    #
-    # Então os nós vão ser
-    #
-    #  (3)   (4)   (6)
-    #
-    #  (1)   (2)   (5)
-    #
-    #
-    Merge(b1,b2)
-
-end
-
-
-
-function T3()
-    
-    # [=========]
-    Lx = 10.0
-    Ly = 1.0
-    nx = 10
-    ny = 1
-    b1 = Bmesh_truss_2D(Lx,nx,Ly,ny)
-
-    
-    #
-    # []
-    # [] 
-    # [] 
-    #
-    Lx = 1.0
-    Ly = 10.0
-    nx = 1
-    ny = 10
-    b2 = Bmesh_truss_2D(Lx,nx,Ly,ny,origin=(0.0,1.0))
-
-    # Test merge
-    Merge(b1,b2)
-
-end
-
-
-function T4()
-    
-    # [=========]
-    Lx = 10.0
-    Ly = 1.0
-    Lz = 1.0
-    nx = 10
-    ny = 1
-    nz = 1
-    b1 = Bmesh_truss_3D(Lx,nx,Ly,ny,Lz,nz)
-
-    
-    #
-    # []
-    # [] 
-    # [] 
-    #
-    Lx = 1.0
-    Ly = 10.0
-    Lz = 1.0
-    nx = 1
-    ny = 10
-    nz = 1
-    b2 = Bmesh_truss_3D(Lx,nx,Ly,ny,Lz,nz,origin=(0.0,1.0,0))
-
-    # Test merge
-    Merge(b1,b2)
-
-end
