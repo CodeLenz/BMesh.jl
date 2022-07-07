@@ -20,6 +20,7 @@ module BMesh
    include("show.jl")
    include("gmsh.jl")
    include("merge.jl")
+   include("util.jl")
    
 
    export Bmesh, Bmesh2D, Bmesh3D
@@ -30,6 +31,7 @@ module BMesh
    export Plot_structure
    export Gmsh_init
    export Merge
+   export Find_node, Find_nodes_in_rectangle, Find_nodes_in_box
 
    # Define macros to help in testing
    macro isinferred(ex)

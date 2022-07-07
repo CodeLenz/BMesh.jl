@@ -28,3 +28,6 @@ include("test_rotation3D.jl")
 
 # Merge
 include("test_merge.jl")
+
+# Util
+include("test_util.jl")
