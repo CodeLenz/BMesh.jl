@@ -3,6 +3,7 @@ module BMesh
 
    # Dependencies
    using LinearAlgebra, StaticArrays, Plots
+   using Statistics:mean
    using Test:@inferred
    
    if isdefined(Base, :Experimental) && isdefined(Base.Experimental, Symbol("@optlevel"))
