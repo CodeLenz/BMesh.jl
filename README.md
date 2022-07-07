@@ -50,4 +50,61 @@ There are some tools to use with Bmesh
    # Global degrees of freedom for a given element
    DOFs(b3,20)
    
+   # Node close to point (x,y)
+   x = 0.0;  y = 0.0
+   node = Find_node(b2,x,y)
+
+   # Nodes inside a rectangle with left bottom coordinate (x1,y1) 
+   # and right top coordinate (x2,y2)
+   x1 = 0.0; y1 = 0.0
+   x2 = 0.5; y2 = 0.5
+   nodes = Nodes_in_rectancle(b2,x1,y1,x2,y2)
+
+   # Nodes inside a box with left bottom coordinate (x1,y1,z1) 
+   # and right top coordinate (x2,y2,z2)
+   x1 = 0.0; y1 = 0.0; z1 = 0.0
+   x2 = 0.5; y2 = 0.5; z2 = 0.5
+   nodes = Nodes_in_box(b3,x1,y1,z1,x2,y2,z2)
+
+```
+
+It is possible to merge two Bmeshes, creating a new one. Each Bmesh
+can be translated by changing the origin (coordinates of node 1).
+
+Lets create a 3D "L" shape by merging two blocks of 3D trusses
+
+```julia
+
+    # Horizontal bmesh 
+    # [=========]
+    Lx = 10.0
+    Ly = 1.0
+    Lz = 1.0
+    nx = 10
+    ny = 1
+    nz = 1
+    b1 = Bmesh_truss_3D(Lx,nx,Ly,ny,Lz,nz)
+    
+    # Vertical bmesh with origin in x0=0.0 y0=1.0 and z0=0.0
+    #
+    # []
+    # [] 
+    # [] 
+    #
+    #
+    Lx = 1.0
+    Ly = 10.0
+    Lz = 1.0
+    nx = 1
+    ny = 10
+    nz = 1
+    b2 = Bmesh_truss_3D(Lx,nx,Ly,ny,Lz,nz,origin=(0.0,1.0,0.0))
+
+    # Merge into a single Bmesh
+    bL = Merge(b1,b2)
+
+```
+It is possible to export coordinates and connectivities to gmsh 
+```julia
+Gmsh_init("output.pos",bL)
 ```
