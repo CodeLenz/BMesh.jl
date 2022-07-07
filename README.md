@@ -58,13 +58,13 @@ There are some tools to use with Bmesh
    # and right top coordinate (x2,y2)
    x1 = 0.0; y1 = 0.0
    x2 = 0.5; y2 = 0.5
-   nodes = Nodes_in_rectangle(b2,x1,y1,x2,y2)
+   nodes = Find_nodes_in_rectangle(b2,x1,y1,x2,y2)
 
    # Nodes inside a box with left bottom coordinate (x1,y1,z1) 
    # and right top coordinate (x2,y2,z2)
    x1 = 0.0; y1 = 0.0; z1 = 0.0
    x2 = 0.5; y2 = 0.5; z2 = 0.5
-   nodes = Nodes_in_box(b3,x1,y1,z1,x2,y2,z2)
+   nodes = Find_nodes_in_box(b3,x1,y1,z1,x2,y2,z2)
 
 ```
 
