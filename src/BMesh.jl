@@ -18,6 +18,7 @@ module BMesh
    include("base.jl")
    include("rotation.jl")
    include("show.jl")
+   include("gmsh.jl")
    
 
    export Bmesh, Bmesh2D, Bmesh3D
@@ -26,6 +27,7 @@ module BMesh
    export Rotation, Rotation2D, Rotation3D, Rotations, T_matrix
    export Coord, Connect, DOFs, Length
    export Plot_structure
+   export Gmsh_init
 
    #
    # Precompilations
