@@ -9,13 +9,6 @@ to delete repeated nodes end elments.
 """
 function Merge(b1::Bmesh, b2::Bmesh; atol=1E-5)
 
-    # The two meshes must be 2D or 3D
-    #isa(b1,Bmesh2D) && isa(b2,Bmesh2D) || throw("Merge: both Bmeshes must have the same dimensionality")
-    #isa(b1,Bmesh3D) && isa(b2,Bmesh3D) || throw("Merge: both Bmeshes must have the same dimensionality")
-
-    # The first thing is to compare all nodes and find the ones with the "same" 
-    # coordinates. Lets use two lists
-
     # First mesh is the "reference"
     nn1 = b1.nn
     nn2 = b2.nn

@@ -154,3 +154,99 @@ function DOFs(bmesh::Bmesh3D,ele::Int64)
   return dofs
   
 end
+
+
+"""
+Return vectors x and y with the nodal coordinates of element ele
+
+   Nodal_coordinates(bm::Bmesh2D,ele::Int64)
+
+where b is a Bmesh2 and ele a valid element.
+"""
+function Nodal_coordinates(bm::Bmesh2D,ele::Int64)
+
+    # Nodes
+    nodes = Connect(bm,ele)
+
+    # Number of nodes
+    nn = length(nodes)
+
+    # Coordinates 
+    x = Vector{Float64}(undef,nn)
+    y = Vector{Float64}(undef,nn)
+    @inbounds for i=1:nn
+
+        # Local coordinates
+        x[i],y[i] = Coord(bm,nodes[i])
+
+    end
+
+   return x, y
+end
+
+
+#
+# Find the coordinates x and y of a given element
+#
+"""
+Return vectors x, y and z with the nodal coordinates of element ele
+
+   Nodal_coordinates(bm::Bmesh3D,ele::Int64)
+
+where m is a Bmesh3D and ele a valid element.
+"""
+function Nodal_coordinates(bm::Bmesh3D,ele::Int64)
+
+    # Nodes
+    nodes = Connect(bm,ele)
+
+    # Number of nodes
+    nn = length(nodes)
+
+    # Coordinates 
+    x = Vector{Float64}(undef,nn)
+    y = Vector{Float64}(undef,nn)
+    z = Vector{Float64}(undef,nn)
+    
+    @inbounds for i=1:nn
+
+        # Local coordinates
+        x[i],y[i],z[i] = Coord(bm,nodes[i])
+
+    end
+
+   return x, y, z
+end
+
+"""
+Return a vector with the centroidal coordinates of element ele
+
+   Centroid(bm::Bmesh2D,ele::Int64)
+
+"""
+function Centroid(bm::Bmesh2D,ele::Int64)
+
+    # Coordinates
+    x,y = Nodal_coordinates(bm,ele)
+
+    # Return mean values
+    [mean(x); mean(y)]
+
+end
+
+# Centroid for a given element
+"""
+Return a vector with the centroidal coordinates of element ele
+
+   Centroid(bm::Bmesh3D,ele::Int64)
+   
+"""
+function Centroid(bm::Bmesh3D,ele::Int64)
+
+    # Coordinates
+    x,y,z = Nodal_coordinates(bm,ele)
+
+    # Return mean values
+    [mean(x); mean(y); mean(z)]
+
+end
