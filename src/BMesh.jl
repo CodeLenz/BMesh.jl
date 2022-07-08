@@ -33,6 +33,8 @@ module BMesh
    export Gmsh_init
    export Merge
    export Find_node, Find_nodes_in_rectangle, Find_nodes_in_box
+   export Find_element, Find_elements_in_rectangle, Find_elements_in_box
+
 
    # Define macros to help in testing
    macro isinferred(ex)
