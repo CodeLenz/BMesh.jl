@@ -82,6 +82,10 @@ There are some tools to use with Bmesh
    x2 = 0.5; y2 = 0.5; z2 = 0.5
    elements = Find_elements_in_box(b3,x1,y1,z1,x2,y2,z2)
 
+   # Return a vector of vectors, with nn positions, containing the elements sharing
+   # each node
+   elems = Elements_sharing_nodes(b2)
+
 ```
 
 It is possible to merge two Bmeshes, creating a new one. Each Bmesh

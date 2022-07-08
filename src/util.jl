@@ -266,8 +266,8 @@ end
 
 
 """
- Return a vector with dimension nn of vectors containing the elements sharing
- each node
+Return a vector of vectors, with nn positions, containing the elements sharing
+each node
 
     Elements_sharing_nodes(bmesh::Bmesh)
 
