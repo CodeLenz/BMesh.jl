@@ -34,6 +34,7 @@ module BMesh
    export Merge
    export Find_node, Find_nodes_in_rectangle, Find_nodes_in_box
    export Find_element, Find_elements_in_rectangle, Find_elements_in_box
+   export Elements_sharing_nodes
 
 
    # Define macros to help in testing

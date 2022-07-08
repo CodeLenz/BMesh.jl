@@ -263,3 +263,43 @@ function Find_elements_in_box(bmesh::Bmesh3D,x1,y1,z1,x2,y2,z2)
 
 end
 
+
+
+"""
+ Return a vector with dimension nn of vectors containing the elements sharing
+ each node
+
+    Elements_sharing_nodes(bmesh::Bmesh)
+
+"""
+function Elements_sharing_nodes(bmesh::Bmesh)
+
+    # Output vectors of vectors
+    output = Vector{Vector{Int64}}(undef,bmesh.nn)
+
+    # Alias
+    connect = bmesh.connect
+
+    # Loop over nodes
+    @inbounds for node=1:bmesh.nn
+
+        #  Local vector 
+        ele_node = Int64[]
+
+        # Loop over elements
+        @inbounds for ele=1:bmesh.ne
+
+            if node in connect[ele,:]
+                push!(ele_node,ele)
+            end
+
+        end #ele
+
+        # Store
+        output[node] = ele_node
+
+    end #node
+
+    # Return the output vector
+    return output
+end
