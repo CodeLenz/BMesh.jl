@@ -36,7 +36,6 @@ module BMesh
    export Find_element, Find_elements_in_rectangle, Find_elements_in_box
    export Elements_sharing_nodes
 
-
    # Define macros to help in testing
    macro isinferred(ex)
     quote try
