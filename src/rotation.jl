@@ -183,15 +183,26 @@ Rotation
 
 General driver for Rotation. It deploys the correct method for either 2D or 3D problems.
 """
-function Rotations(bmesh::Bmesh,ele::Int64,α=0.0)
+function Rotations(bmesh::Bmesh2D,ele::Int64,α=0.0)
     
-    if isa(bmesh,Bmesh2D)
+    #if isa(bmesh,Bmesh2D)
        return Rotation2D(bmesh,ele)
-    else
-       return Rotation3D(bmesh,ele,α)
-    end
+    #else
+    #   return Rotation3D(bmesh,ele,α)
+    #end
         
  end
+
+ function Rotations(bmesh::Bmesh3D,ele::Int64,α=0.0)
+    
+  #if isa(bmesh,Bmesh2D)
+  #   return Rotation2D(bmesh,ele)
+  #else
+     return Rotation3D(bmesh,ele,α)
+  #end
+      
+end
+
 
   #
   # Rotação 2D
