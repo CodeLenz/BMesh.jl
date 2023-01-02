@@ -10,6 +10,8 @@
     # Direct
     @test all(T_matrix(b2,1).≈ refer)
 
+    @test_nowarn @report_opt target_modules=(@__MODULE__,) T_matrix(b2,1)
+
     # Using r and T_matrix
     r = Rotation2D(b2,1)
     @test r.cos_xx ≈ 1.0
@@ -17,7 +19,7 @@
     @test r.cos_xy ≈ 0.0
     @test r.cos_yy ≈ 1.0
     @test all(T_matrix(r).≈ refer)
-
+    @test_nowarn @report_opt target_modules=(@__MODULE__,) Rotation2D(b2,1)
 
     # Third element is at 90 degrees
     refer = [0.0 1.0  0.0 0.0 ;
@@ -27,6 +29,7 @@
 
     # Direct
     @test all(isapprox(T_matrix(b2,3),refer;atol=1E-12))
+    @test_nowarn @report_opt target_modules=(@__MODULE__,) T_matrix(b2,3)
 
     # Using r and T_matrix
     r = Rotation2D(b2,3)
@@ -35,6 +38,7 @@
     @test isapprox(r.cos_xy,1.0;atol=1E-12)
     @test isapprox(r.cos_yy,0.0;atol=1E-12)
     @test all(isapprox(T_matrix(r),refer;atol=1E-12))
+    @test_nowarn @report_opt target_modules=(@__MODULE__,) Rotation2D(b2,3)
 
 
     # Fifth  element is at 45 degrees

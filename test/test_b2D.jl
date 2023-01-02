@@ -17,8 +17,12 @@
     # truss2D
     @test isa(Bmesh2D(etype,nn,ne,coord,connect,Lx,Ly,nx,ny),Bmesh2D)
 
+    # Test dispatch
+    @test_nowarn @report_opt target_modules=(@__MODULE__,) Bmesh2D(etype,nn,ne,coord,connect,Lx,Ly,nx,ny)
+
     # solid2D
     @test isa(Bmesh2D(:solid2D,nn,ne,coord,connect,Lx,Ly,nx,ny),Bmesh2D)
+    @test_nowarn@report_opt target_modules=(@__MODULE__,) Bmesh2D(:solid2D,nn,ne,coord,connect,Lx,Ly,nx,ny)
 
     #
     # Should throw assertion error 

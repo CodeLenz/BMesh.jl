@@ -2,6 +2,9 @@ using Test
 using BMesh
 using LinearAlgebra
 
+# For dispatch analysis
+using JET
+
 # Method 2D
 include("test_b2D.jl")
 
