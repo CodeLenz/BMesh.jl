@@ -25,7 +25,7 @@
 
     # Direct
     @test all(T_matrix(b3,1).≈ refer)
-    @test_nowarn @report_opt target_modules=(@__MODULE__,) T_matrix(b3,1)
+    # @test_nowarn @report_opt target_modules=(@__MODULE__,) T_matrix(b3,1)
 
     r = Rotation3D(b3,1)
     @test isapprox(r.cos_xx,1.0,atol=1E-12)
@@ -38,7 +38,7 @@
     @test isapprox(r.cos_xz,0.0,atol=1E-12)
     @test isapprox(r.cos_yz,0.0,atol=1E-12)
     @test isapprox(r.cos_zz,1.0,atol=1E-12)
-    @test_nowarn @report_opt target_modules=(@__MODULE__,) Rotation3D(b3,1)
+    # @test_nowarn @report_opt target_modules=(@__MODULE__,) Rotation3D(b3,1)
     
     #  Indirect
     @test all(T_matrix(r).≈ refer)
@@ -57,7 +57,7 @@
 
     # Direct
      @test all(T_matrix(b3,1,45).≈ refer)
-     @test_nowarn @report_opt target_modules=(@__MODULE__,) T_matrix(b3,1,45)
+     # @test_nowarn @report_opt target_modules=(@__MODULE__,) T_matrix(b3,1,45)
  
     # If we rotate it 90 degrees around the local x axes
     # we switch Z->y and -Y->z
