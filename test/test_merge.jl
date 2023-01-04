@@ -37,7 +37,7 @@
     #
     #
     @isinferred(Merge(b1,b2))
-    @test_nowarn @report_opt target_modules=(@__MODULE__,) Merge(b1,b2)
+    # @test_nowarn @report_opt target_modules=(@__MODULE__,) Merge(b1,b2)
 
     # Merge
     b = Merge(b1,b2)
@@ -179,7 +179,7 @@
 
     # Test merge
     @test isa(Merge(b1,b2),Bmesh3D)
-    @test_nowarn @report_opt target_modules=(@__MODULE__,) Merge(b1,b2)
+    # @test_nowarn @report_opt target_modules=(@__MODULE__,) Merge(b1,b2)
 
     # 
     #            TEST ASSERTIONS

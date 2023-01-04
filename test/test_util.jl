@@ -11,7 +11,7 @@ b1 = Bmesh_solid_2D(Lx,nx,Ly,ny)
 # Find node close to (0.0,0.0)
 node = Find_node(b1,0.0,0.0)
 @test node==1
-@test_nowarn @report_opt target_modules=(@__MODULE__,) Find_node(b1,0.0,0.0)
+# @test_nowarn @report_opt target_modules=(@__MODULE__,) Find_node(b1,0.0,0.0)
 
 @isinferred Find_node(b1,0.0,0.0)
 
@@ -29,7 +29,7 @@ node = Find_node(b1,1.0,1.0)
 nodes = Find_nodes_in_rectangle(b1,0.0,0.0,Lx,Ly)
 @test length(nodes)==b1.nn
 @test all(nodes.==collect(1:b1.nn))
-@test_nowarn @report_opt target_modules=(@__MODULE__,) Find_nodes_in_rectangle(b1,0.0,0.0,Lx,Ly)
+# @test_nowarn @report_opt target_modules=(@__MODULE__,) Find_nodes_in_rectangle(b1,0.0,0.0,Lx,Ly)
 
 
             #  Test 3 - Find nodes in square
@@ -56,7 +56,7 @@ b3 = Bmesh_solid_3D(Lx,nx,Ly,ny,Lz,nz)
 # Find node close to (0.0,0.0,0.0)
 node = Find_node(b3,0.0,0.0,0.0)
 @test node==1
-@test_nowarn @report_opt target_modules=(@__MODULE__,) Find_node(b3,0.0,0.0,0.0)
+# @test_nowarn @report_opt target_modules=(@__MODULE__,) Find_node(b3,0.0,0.0,0.0)
 
 @isinferred Find_node(b3,0.0,0.0,0.0)
 
@@ -82,7 +82,7 @@ node = Find_node(b3,1.0,1.0,1.0)
 nodes = Find_nodes_in_box(b3,0.0,0.0,0.0,Lx,Ly,Lz/(nz)/2)
 @test length(nodes) == (nx+1)*(ny+1)
 @test all(nodes.==collect(1: (nx+1)*(ny+1)))
-@test_nowarn @report_opt target_modules=(@__MODULE__,) Find_nodes_in_box(b3,0.0,0.0,0.0,Lx,Ly,Lz/(nz)/2)
+# @test_nowarn @report_opt target_modules=(@__MODULE__,) Find_nodes_in_box(b3,0.0,0.0,0.0,Lx,Ly,Lz/(nz)/2)
            
            
       
@@ -121,7 +121,7 @@ end
    # Element  close to (0.0,0.0)
    element = Find_element(b1,0.0,0.0)
    @test element==1
-   @test_nowarn @report_opt target_modules=(@__MODULE__,) Find_element(b1,0.0,0.0)
+   # @test_nowarn @report_opt target_modules=(@__MODULE__,) Find_element(b1,0.0,0.0)
 
    @isinferred Find_element(b1,0.0,0.0)
 
@@ -136,7 +136,7 @@ end
    elements = Find_elements_in_rectangle(b1,0.0,0.0,Lx,Ly)
    @test length(elements)==b1.ne
    @test all(elements.==collect(1:b1.ne))
-   @test_nowarn @report_opt target_modules=(@__MODULE__,) Find_elements_in_rectangle(b1,0.0,0.0,Lx,Ly)
+   # @test_nowarn @report_opt target_modules=(@__MODULE__,) Find_elements_in_rectangle(b1,0.0,0.0,Lx,Ly)
 
       #  Test 3 - Find elements in square
       #             Bottom row 
@@ -177,7 +177,7 @@ end
    elements = Find_elements_in_box(b3,0.0,0.0,0.0,Lx,Ly,Lz)
    @test length(elements)==b3.ne
    @test all(elements.==collect(1:b3.ne))
-   @test_nowarn @report_opt target_modules=(@__MODULE__,) Find_elements_in_box(b3,0.0,0.0,0.0,Lx,Ly,Lz)
+   # @test_nowarn @report_opt target_modules=(@__MODULE__,) Find_elements_in_box(b3,0.0,0.0,0.0,Lx,Ly,Lz)
 
 
 

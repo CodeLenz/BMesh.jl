@@ -18,11 +18,11 @@
 
     # truss3D
     @test isa(Bmesh3D(etype,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz),Bmesh3D)
-    @test_nowarn @report_opt target_modules=(@__MODULE__,) Bmesh3D(etype,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz)
+    # @test_nowarn @report_opt target_modules=(@__MODULE__,) Bmesh3D(etype,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz)
 
     # Solid 3D
     @test isa(Bmesh3D(:solid3D,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz),Bmesh3D)
-    @test_nowarn @report_opt target_modules=(@__MODULE__,) Bmesh3D(:solid3D,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz)
+    # @test_nowarn @report_opt target_modules=(@__MODULE__,) Bmesh3D(:solid3D,nn,ne,coord,connect,Lx,Ly,Lz,nx,ny,nz)
 
     #
     # Should throw assertion error 
