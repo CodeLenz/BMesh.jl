@@ -18,51 +18,24 @@ function Connect(bmesh::Bmesh,ele::Int64)
 
 end
 
-#
-# Retorna as coordenadas de um nó
-#
-"""
-  Return the coordinates of node 
-
-    Coord(bmesh::Bmesh2D,node::Int64)
-
-  as a vector [x;y]
-"""
-function Coord(bmesh::Bmesh2D,node::Int64)
-
-   # Consistência do nó
-   0 < node <= bmesh.nn || throw("Coord:: invalid node $node")
-
-   # Coordenadas
-   x = bmesh.coord[node,1]
-   y = bmesh.coord[node,2]
-  
-   # Retorna as coordenadas
-   return [x;y]
-
-end
 
 """
   Return the coordinates of node 
 
-    Coord(bmesh::Bmesh3D,node::Int64)
+    Coord(bmesh::Bmesh,node::Int64)
 
-  as a vector [x;y;z]
+  as a vector [x;y];z]
 """
-function Coord(bmesh::Bmesh3D,node::Int64)
+function Coord(bmesh::Bmesh,node::Int64)
 
   # Consistência do nó
   0 < node <= bmesh.nn || throw("Coord::invalid node $node")
 
   # Coordenadas
-  x = bmesh.coord[node,1]
-  y = bmesh.coord[node,2]
-  z = bmesh.coord[node,3]
-       
-  # Retorna as coordenadas
-  return [x;y;z]
+  return bmesh.coord[node,:]
 
 end
+
 
 #
 # Calcula o comprimento entre os nós nodes[1] e nodes[2]
