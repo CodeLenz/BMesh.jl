@@ -14,13 +14,13 @@
     Lgmsh_export_init("truss3D.pos",b3)
 
     # 2D background mesh in a 1 x 1  solid domain with 10 divisions in X and 10 in Y
-    bs4 = Bmesh_solid_2D(1.0,10,1.0,10)
+    b4 = Bmesh_solid_2D(1.0,10,1.0,10)
 
     # Export
     Lgmsh_export_init("solid2D.pos",b4)
 
     # 3D background mesh in a 1 x 1 x 1 solid domain with 10 divisions in each direction
-    bs5 = Bmesh_solid_3D(1.0,10,1.0,10,1.0,10)
+    b5 = Bmesh_solid_3D(1.0,10,1.0,10,1.0,10)
 
     # Export
     Lgmsh_export_init("solid3D.pos",b5)
