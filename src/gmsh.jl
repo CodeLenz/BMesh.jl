@@ -4,7 +4,7 @@
 #
 #                            Export
 #
-import Lgmsh,Lgmsh_export_init
+import Lgmsh:Lgmsh_export_init
 function Lgmsh_export_init(filename::String,bmesh::Bmesh)
 
     # aliases

@@ -3,7 +3,7 @@ module BMesh
 
    # Dependencies
    using LinearAlgebra, StaticArrays
-   using Lgmsh:Lgmsh_export_init
+   using Lgmsh
    using Statistics:mean
    using Test:@inferred
    
