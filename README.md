@@ -19,9 +19,9 @@ bs2 = Bmesh_solid_2D(1.0,10,1.0,10)
 # 3D background mesh in a 1 x 1 x 1 solid domain with 10 divisions in each direction
 bs3 = Bmesh_solid_3D(1.0,10,1.0,10,1.0,10)
 
-# Plots:plot is overloaded to bmesh
-# Just for truss by now
-plot(b3)
+# Export mesh to gmsh for visualization
+# 
+Lgmsh_export_init("bmesh.pos",b3)
 
 ```
 There are some tools to use with Bmesh
@@ -123,8 +123,4 @@ Lets create a 3D "L" shape by merging two blocks of 3D trusses
     # Merge into a single Bmesh
     bL = Merge(b1,b2)
 
-```
-It is possible to export coordinates and connectivities to gmsh 
-```julia
-Gmsh_init("output.pos",bL)
 ```

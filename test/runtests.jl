@@ -34,3 +34,6 @@ include("test_merge.jl")
 
 # Util
 include("test_util.jl")
+
+# Visualization
+include("test_gmsh.jl")

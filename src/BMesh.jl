@@ -2,7 +2,8 @@
 module BMesh
 
    # Dependencies
-   using LinearAlgebra, StaticArrays, Plots
+   using LinearAlgebra, StaticArrays
+   using Lgmsh:Lgmsh_export_init
    using Statistics:mean
    using Test:@inferred
    
@@ -18,7 +19,6 @@ module BMesh
    include("bmesh_solid_3d.jl")
    include("base.jl")
    include("rotation.jl")
-   include("show.jl")
    include("gmsh.jl")
    include("merge.jl")
    include("util.jl")
@@ -29,8 +29,7 @@ module BMesh
    export Bmesh_solid_2D, Bmesh_solid_3D
    export Rotation, Rotation2D, Rotation3D, Rotations, T_matrix
    export Coord, Connect, DOFs, Length, Centroid, Nodal_coordinates
-   export Plot_structure
-   export Gmsh_init
+   export Lgmsh_export_init
    export Merge
    export Find_node, Find_nodes_in_rectangle, Find_nodes_in_box
    export Find_element, Find_elements_in_rectangle, Find_elements_in_box
