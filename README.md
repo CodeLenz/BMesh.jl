@@ -21,7 +21,7 @@ bs3 = Bmesh_solid_3D(1.0,10,1.0,10,1.0,10)
 
 # Export mesh to gmsh for visualization
 # 
-Lgmsh_export_init("bmesh.pos",b3)
+Lgmsh_export_init("bmesh.pos",bs3)
 
 ```
 There are some tools to use with Bmesh
