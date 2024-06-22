@@ -14,15 +14,12 @@ function Lgmsh_export_init(filename::String,bmesh::Bmesh)
     connect = bmesh.connect
 
     # Element types depend on the element type 
-
-    # Start with "bar" element, valid for truss2D and 3D
-    etype = ones(Int64,ne)
-
-    # Other possibilities
     if bmesh.etype==:solid2D
-        etype = 3*etype
+        etype = 3*ones(Int64,ne)
     elseif bmesh.etype==:solid3D
-        etype = 5*etype
+        etype = 5*ones(Int64,ne)
+    else
+        etype = ones(Int64,ne)
     end
 
     # Call Lgmsh 
